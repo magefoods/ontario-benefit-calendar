@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ontario Government Payment Dates</title>
     <style>
         * {
@@ -207,6 +207,17 @@
         .github-link:hover {
             background: #555;
         }
+
+        /* Link style in announcement */
+        .announcement-link {
+            color: #764ba2;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .announcement-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -217,6 +228,25 @@
             <h1>Ontario Government Payment Dates</h1>
             <p class="subtitle">Stay informed about your benefit payment schedules</p>
         </header>
+
+        <!-- Important announcements at the top -->
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div class="important-note" style="max-width: 600px; margin: 0 auto;">
+                <h3>Important Weekend Release Information</h3>
+                <p>Most banks will release Monday payments on Saturday:</p>
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem; text-align: left; display: inline-block;">
+                    <li><strong>ODSP:</strong> September 29th (Monday) releases September 27th (Saturday) for many banks</li>
+                    <li><strong>Trillium:</strong> November 10th (Monday) releases November 8th (Saturday) for many banks</li>
+                    <li><strong>CCB:</strong> October 20th (Monday) releases October 18th (Saturday) for many banks</li>
+                </ul>
+            </div>
+
+            <div class="important-note" style="max-width: 600px; margin: 1rem auto 0;">
+                <h3>Site Update Requests</h3>
+                <p>If you notice incorrect dates or want to add more bank info, please <a href="https://www.reddit.com/message/compose/?to=magefood" target="_blank" rel="noopener noreferrer" class="announcement-link">send me a message on Reddit</a>.</p>
+                <p>For community discussion and more info, visit the <a href="https://www.reddit.com/r/odsp" target="_blank" rel="noopener noreferrer" class="announcement-link">/r/ODSP subreddit</a>.</p>
+            </div>
+        </div>
 
         <nav>
             <div class="nav-links">
@@ -292,16 +322,6 @@
                 <div class="payment-date">November 26, 2025</div>
                 <div class="payment-date">December 22, 2025</div>
             </div>
-        </div>
-
-        <div class="important-note">
-            <h3>Important Weekend Release Information</h3>
-            <p>Most banks will release Monday payments on Saturday:</p>
-            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
-                <li><strong>ODSP:</strong> September 29th (Monday) releases September 27th (Saturday) for many banks</li>
-                <li><strong>Trillium:</strong> November 10th (Monday) releases November 8th (Saturday) for many banks</li>
-                <li><strong>CCB:</strong> October 20th (Monday) releases October 18th (Saturday) for many banks</li>
-            </ul>
         </div>
 
         <div class="bank-info" id="banks">
@@ -381,7 +401,6 @@
         function highlightCurrentMonth() {
             const currentDate = new Date();
             const currentMonth = currentDate.getMonth() + 1; // JavaScript months are 0-indexed
-            const currentYear = currentDate.getFullYear();
             
             document.querySelectorAll('.payment-date').forEach(dateElement => {
                 const dateText = dateElement.textContent;
