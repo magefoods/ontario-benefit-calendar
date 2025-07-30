@@ -4,192 +4,188 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ontario Government Payment Dates</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
+      background-color: #f8f9fa;
+      color: #333;
       font-family: system-ui, sans-serif;
       margin: 0;
-      background: #f9f9f9;
-      color: #333;
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark {
-      background: #1e1e1e;
-      color: #eee;
+      padding: 0;
     }
     header {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
+      background: linear-gradient(to right, #667eea, #764ba2);
       padding: 2rem 1rem;
       text-align: center;
-      position: relative;
+      color: white;
     }
-    header h1 {
+    h1 {
       margin: 0;
-      font-size: 2.25rem;
+      font-size: 2.5rem;
     }
-    header p {
+    .subtitle {
+      font-size: 1rem;
       opacity: 0.9;
     }
-    #toggle-theme {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: #fff;
-      color: #333;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    body.dark #toggle-theme {
-      background: #333;
-      color: #fff;
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
     .announcement {
       background: #fff3cd;
-      border-left: 6px solid #ffecb5;
+      border-left: 4px solid #ffca2c;
       padding: 1rem;
-      margin: 1rem auto;
-      max-width: 800px;
-      border-radius: 6px;
+      margin-bottom: 1rem;
+      border-radius: 8px;
     }
-    nav {
-      text-align: center;
-      margin: 1rem auto;
-    }
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #667eea;
-      font-weight: 600;
-    }
-    .payment-section {
-      max-width: 800px;
-      margin: 1rem auto;
+    .payment-card {
       background: white;
-      padding: 1rem;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
-    .payment-section h2 {
-      margin-top: 0;
+    .payment-card h2 {
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
     .payment-date {
-      padding: 0.5rem 0;
-    }
-    .hidden {
-      display: none;
-    }
-    .show-toggle {
-      background: #667eea;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-left: 4px solid #667eea;
+      background: #f8f9fa;
       border-radius: 4px;
-      cursor: pointer;
-      margin-top: 0.5rem;
-    }
-    footer {
-      text-align: center;
-      font-size: 0.875rem;
-      padding: 2rem 1rem;
-      color: #666;
     }
     .highlight-next {
       background: #d1ecf1;
-      border-left: 4px solid #0c5460;
-      padding: 0.5rem;
-      margin: 0.25rem 0;
+      border-left-color: #17a2b8;
+    }
+    .toggle-more {
+      background: none;
+      border: none;
+      color: #667eea;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0.25rem 0;
+      margin-top: 0.5rem;
+    }
+    nav {
+      text-align: center;
+      margin: 1rem 0 2rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #667eea;
+      font-weight: 600;
+      margin: 0 1rem;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      padding: 2rem 1rem;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Ontario Government Payment Dates</h1>
-    <p>Stay informed about your benefit payment schedules</p>
-    <button id="toggle-theme">Dark Mode</button>
+    <p class="subtitle">Stay informed about benefit payment schedules</p>
   </header>
 
-  <div class="announcement" id="announcement-weekend" style="display: none;"></div>
-  <div class="announcement">
-    You can now click any benefit to see upcoming payment dates.
-    <a href="changelog.html" style="margin-left: 1rem; font-weight: bold;">View Changelog</a>
-  </div>
-
   <main>
-    <section class="payment-section" id="odsp">
-      <h2>ODSP Payment Dates</h2>
-      <div class="payment-date highlight-next">September 29, 2025</div>
-      <div class="payment-date hidden">October 31, 2025</div>
-      <div class="payment-date hidden">November 28, 2025</div>
-      <button class="show-toggle">Show All</button>
-    </section>
+    <nav>
+      <a href="changelog.html">View Changelog</a>
+    </nav>
 
-    <section class="payment-section" id="trillium">
-      <h2>Ontario Trillium Benefit</h2>
-      <div class="payment-date highlight-next">September 10, 2025</div>
-      <div class="payment-date hidden">October 10, 2025</div>
-      <div class="payment-date hidden">November 10, 2025</div>
-      <div class="payment-date hidden">December 10, 2025</div>
-      <button class="show-toggle">Show All</button>
-    </section>
-
-    <section class="payment-section" id="ccb">
-      <h2>Canada Child Benefit</h2>
-      <div class="payment-date highlight-next">September 19, 2025</div>
-      <div class="payment-date hidden">October 20, 2025</div>
-      <div class="payment-date hidden">November 20, 2025</div>
-      <div class="payment-date hidden">December 12, 2025</div>
-      <button class="show-toggle">Show All</button>
-    </section>
+    <div id="monthly-announcement" class="announcement" style="display: none;"></div>
+    <div id="payment-sections"></div>
   </main>
 
   <footer>
-    This site is maintained by the community. Always verify dates with official sources.<br />
-    Last updated: July 30th, 12:05 PM
+    <p>This information is compiled from community sources and official government websites.<br>Always verify payment dates with official sources.</p>
+    <p style="margin-top: 0.5rem; font-style: italic;">Last updated: July 30th, 12:05 PM</p>
   </footer>
 
   <script>
-    const buttons = document.querySelectorAll('.show-toggle');
-    buttons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const section = btn.closest('.payment-section');
-        const dates = section.querySelectorAll('.payment-date.hidden');
-        dates.forEach(date => date.classList.toggle('hidden'));
-        btn.textContent = btn.textContent.includes('Show') ? 'Hide' : 'Show All';
-      });
-    });
-
-    // Dark mode toggle
-    const toggleTheme = document.getElementById('toggle-theme');
-    const body = document.body;
-    function updateThemeText() {
-      toggleTheme.textContent = body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
-    }
-    if (localStorage.getItem('theme') === 'dark') body.classList.add('dark');
-    updateThemeText();
-    toggleTheme.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
-      updateThemeText();
-    });
-
-    // Monthly logic-based announcement display
-    const month = new Date().getMonth(); // 0-11
-    const messages = {
-      8: "<strong>ODSP:</strong> September 29 (Monday) releases September 27 (Saturday) for many banks.",
-      9: "<strong>CCB:</strong> October 20 (Monday) releases October 18 (Saturday) for many banks.",
-      10: "<strong>Trillium:</strong> November 10 (Monday) releases November 8 (Saturday) for many banks."
+    const data = {
+      ODSP: ["July 31, 2025", "August 29, 2025", "September 29, 2025", "October 31, 2025", "November 28, 2025"],
+      Trillium: ["July 10, 2025", "August 8, 2025", "September 10, 2025", "October 10, 2025", "November 10, 2025"],
+      GST: ["October 3, 2025"],
+      Disability: ["July 17, 2025", "August 21, 2025", "September 18, 2025", "October 16, 2025"],
+      CCB: ["July 18, 2025", "August 20, 2025", "September 19, 2025", "October 20, 2025"],
+      CWB: ["July 11, 2025", "October 10, 2025"],
+      CPP: ["July 29, 2025", "August 27, 2025", "September 25, 2025", "October 29, 2025"]
     };
-    if (messages[month]) {
-      document.getElementById('announcement-weekend').style.display = 'block';
-      document.getElementById('announcement-weekend').innerHTML = `
-        <h3>Important Weekend Release Information</h3>
-        <p>${messages[month]}</p>
-      `;
+
+    const specialMessages = {
+      8: `<li><strong>ODSP:</strong> September 29th (Monday) releases September 27th (Saturday) for many banks</li>`,
+      9: `<li><strong>CCB:</strong> October 20th (Monday) releases October 18th (Saturday) for many banks</li>`,
+      10: `<li><strong>Trillium:</strong> November 10th (Monday) releases November 8th (Saturday) for many banks</li>`
+    };
+
+    function showSpecialAnnouncement() {
+      const month = new Date().getMonth(); // 0-indexed
+      const box = document.getElementById("monthly-announcement");
+      if (specialMessages[month]) {
+        box.style.display = "block";
+        box.innerHTML = `<strong>Important Weekend Release Information</strong><p>Most banks will release Monday payments on Saturday:</p><ul style='margin-top: 0.5rem; margin-left: 1.5rem; text-align: left;'>${specialMessages[month]}</ul>`;
+      }
     }
+
+    function renderSections() {
+      const container = document.getElementById("payment-sections");
+      const today = new Date();
+
+      Object.entries(data).forEach(([name, dates]) => {
+        const section = document.createElement("section");
+        section.className = "payment-card";
+        const heading = document.createElement("h2");
+        heading.textContent = name;
+        section.appendChild(heading);
+
+        const upcoming = dates.map(d => ({ raw: d, date: new Date(d) })).filter(d => d.date >= today);
+
+        if (upcoming.length > 0) {
+          const [first, ...rest] = upcoming;
+
+          const nextEl = document.createElement("div");
+          nextEl.className = "payment-date highlight-next";
+          nextEl.textContent = first.raw;
+          section.appendChild(nextEl);
+
+          if (rest.length > 0) {
+            const moreDiv = document.createElement("div");
+            moreDiv.style.display = "none";
+
+            rest.forEach(item => {
+              const el = document.createElement("div");
+              el.className = "payment-date";
+              el.textContent = item.raw;
+              moreDiv.appendChild(el);
+            });
+
+            const btn = document.createElement("button");
+            btn.className = "toggle-more";
+            btn.textContent = "Show All";
+            btn.addEventListener("click", () => {
+              const expanded = moreDiv.style.display === "block";
+              moreDiv.style.display = expanded ? "none" : "block";
+              btn.textContent = expanded ? "Show All" : "Hide";
+            });
+
+            section.appendChild(moreDiv);
+            section.appendChild(btn);
+          }
+        }
+
+        container.appendChild(section);
+      });
+    }
+
+    showSpecialAnnouncement();
+    renderSections();
   </script>
 </body>
 </html>
