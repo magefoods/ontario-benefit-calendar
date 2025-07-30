@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ontario Government Payment Dates</title>
   <style>
     body {
@@ -110,7 +110,14 @@
 
   <script>
     const data = {
-      ODSP: ["July 31, 2025", "August 29, 2025", "September 29, 2025", "October 31, 2025", "November 28, 2025"],
+      ODSP: [
+        "July 31, 2025",
+        "August 29, 2025",
+        "September 29, 2025",
+        "October 31, 2025",
+        "November 28, 2025",
+        "December 2025 — TBC for the ODSP payment"
+      ],
       Trillium: ["July 10, 2025", "August 8, 2025", "September 10, 2025", "October 10, 2025", "November 10, 2025"],
       GST: ["October 3, 2025"],
       Disability: ["July 17, 2025", "August 21, 2025", "September 18, 2025", "October 16, 2025"],
@@ -126,7 +133,7 @@
     };
 
     function showSpecialAnnouncement() {
-      const month = new Date().getMonth(); // 0-indexed
+      const month = new Date().getMonth(); // 0-indexed month
       const box = document.getElementById("monthly-announcement");
       if (specialMessages[month]) {
         box.style.display = "block";
@@ -141,11 +148,26 @@
       Object.entries(data).forEach(([name, dates]) => {
         const section = document.createElement("section");
         section.className = "payment-card";
+
         const heading = document.createElement("h2");
         heading.textContent = name;
         section.appendChild(heading);
 
-        const upcoming = dates.map(d => ({ raw: d, date: new Date(d) })).filter(d => d.date >= today);
+        // Parse dates but allow non-date string (TBC)
+        const upcoming = [];
+        const nonDateItems = [];
+
+        dates.forEach(d => {
+          const parsed = Date.parse(d);
+          if (!isNaN(parsed)) {
+            if (new Date(parsed) >= today) {
+              upcoming.push({ raw: d, date: new Date(parsed) });
+            }
+          } else {
+            // Non-date (e.g. TBC) goes in nonDateItems to show always
+            nonDateItems.push(d);
+          }
+        });
 
         if (upcoming.length > 0) {
           const [first, ...rest] = upcoming;
@@ -166,6 +188,8 @@
               moreDiv.appendChild(el);
             });
 
+            section.appendChild(moreDiv);
+
             const btn = document.createElement("button");
             btn.className = "toggle-more";
             btn.textContent = "Show All";
@@ -174,11 +198,19 @@
               moreDiv.style.display = expanded ? "none" : "block";
               btn.textContent = expanded ? "Show All" : "Hide";
             });
-
-            section.appendChild(moreDiv);
             section.appendChild(btn);
           }
         }
+
+        // Show any non-date lines (e.g. TBC text) below the dates, always visible
+        nonDateItems.forEach(text => {
+          const tbcDiv = document.createElement("div");
+          tbcDiv.className = "payment-date";
+          tbcDiv.style.fontStyle = "italic";
+          tbcDiv.style.borderLeftColor = "#ff9800";
+          tbcDiv.textContent = text;
+          section.appendChild(tbcDiv);
+        });
 
         container.appendChild(section);
       });
