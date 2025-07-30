@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ontario Government Payment Dates</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      background: #1e1e1e;
+      color: #eee;
+    }
+    header {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.25rem;
+    }
+    header p {
+      opacity: 0.9;
+    }
+    #toggle-theme {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #fff;
+      color: #333;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    body.dark #toggle-theme {
+      background: #333;
+      color: #fff;
+    }
+    .announcement {
+      background: #fff3cd;
+      border-left: 6px solid #ffecb5;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 800px;
+      border-radius: 6px;
+    }
+    nav {
+      text-align: center;
+      margin: 1rem auto;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #667eea;
+      font-weight: 600;
+    }
+    .payment-section {
+      max-width: 800px;
+      margin: 1rem auto;
+      background: white;
+      padding: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .payment-section h2 {
+      margin-top: 0;
+    }
+    .payment-date {
+      padding: 0.5rem 0;
+    }
+    .hidden {
+      display: none;
+    }
+    .show-toggle {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.875rem;
+      padding: 2rem 1rem;
+      color: #666;
+    }
+    .highlight-next {
+      background: #d1ecf1;
+      border-left: 4px solid #0c5460;
+      padding: 0.5rem;
+      margin: 0.25rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ontario Government Payment Dates</h1>
+    <p>Stay informed about your benefit payment schedules</p>
+    <button id="toggle-theme">Dark Mode</button>
+  </header>
+
+  <div class="announcement" id="announcement-weekend" style="display: none;"></div>
+  <div class="announcement">
+    You can now click any benefit to see upcoming payment dates.
+    <a href="changelog.html" style="margin-left: 1rem; font-weight: bold;">View Changelog</a>
+  </div>
+
+  <main>
+    <section class="payment-section" id="odsp">
+      <h2>ODSP Payment Dates</h2>
+      <div class="payment-date highlight-next">September 29, 2025</div>
+      <div class="payment-date hidden">October 31, 2025</div>
+      <div class="payment-date hidden">November 28, 2025</div>
+      <button class="show-toggle">Show All</button>
+    </section>
+
+    <section class="payment-section" id="trillium">
+      <h2>Ontario Trillium Benefit</h2>
+      <div class="payment-date highlight-next">September 10, 2025</div>
+      <div class="payment-date hidden">October 10, 2025</div>
+      <div class="payment-date hidden">November 10, 2025</div>
+      <div class="payment-date hidden">December 10, 2025</div>
+      <button class="show-toggle">Show All</button>
+    </section>
+
+    <section class="payment-section" id="ccb">
+      <h2>Canada Child Benefit</h2>
+      <div class="payment-date highlight-next">September 19, 2025</div>
+      <div class="payment-date hidden">October 20, 2025</div>
+      <div class="payment-date hidden">November 20, 2025</div>
+      <div class="payment-date hidden">December 12, 2025</div>
+      <button class="show-toggle">Show All</button>
+    </section>
+  </main>
+
+  <footer>
+    This site is maintained by the community. Always verify dates with official sources.<br />
+    Last updated: July 30th, 12:05 PM
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.show-toggle');
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const section = btn.closest('.payment-section');
+        const dates = section.querySelectorAll('.payment-date.hidden');
+        dates.forEach(date => date.classList.toggle('hidden'));
+        btn.textContent = btn.textContent.includes('Show') ? 'Hide' : 'Show All';
+      });
+    });
+
+    // Dark mode toggle
+    const toggleTheme = document.getElementById('toggle-theme');
+    const body = document.body;
+    function updateThemeText() {
+      toggleTheme.textContent = body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+    }
+    if (localStorage.getItem('theme') === 'dark') body.classList.add('dark');
+    updateThemeText();
+    toggleTheme.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
+      updateThemeText();
+    });
+
+    // Monthly logic-based announcement display
+    const month = new Date().getMonth(); // 0-11
+    const messages = {
+      8: "<strong>ODSP:</strong> September 29 (Monday) releases September 27 (Saturday) for many banks.",
+      9: "<strong>CCB:</strong> October 20 (Monday) releases October 18 (Saturday) for many banks.",
+      10: "<strong>Trillium:</strong> November 10 (Monday) releases November 8 (Saturday) for many banks."
+    };
+    if (messages[month]) {
+      document.getElementById('announcement-weekend').style.display = 'block';
+      document.getElementById('announcement-weekend').innerHTML = `
+        <h3>Important Weekend Release Information</h3>
+        <p>${messages[month]}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
