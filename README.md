@@ -3,7 +3,7 @@
 A simple, mobile-friendly website that helps you keep track of payment dates for key Ontario and Canadian government benefits. The site is designed to be accessible for everyone and is regularly updated with accurate payment schedules.
 
 ## Live Site
- **Check it out:** [https://magefoods.github.io/odsp](https://magefoods.github.io/odsp)
+ **Check it out:** [https://magefoods.github.io/odsp](https://magefoods.github.io/ontario-benefit-calendar)
 
 ## Benefits Included
 - Ontario Disability Support Program (ODSP)
