@@ -5,51 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ontario Government Payment Dates</title>
   <style>
-    body {
-      background-color: #f8f9fa;
-      color: #333;
-      font-family: system-ui, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: linear-gradient(to right, #667eea, #764ba2);
-      padding: 2rem 1rem;
-      text-align: center;
-      color: white;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    .subtitle {
-      font-size: 1rem;
-      opacity: 0.9;
-    }
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .announcement {
-      background: #fff3cd;
-      border-left: 4px solid #ffca2c;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-    }
-    .payment-card {
-      background: white;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-      padding: 1rem 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    .payment-card h2 {
-      border-bottom: 2px solid #667eea;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-    }
+    /* ... your existing styles ... */
     .payment-date {
       padding: 0.5rem;
       margin-bottom: 0.5rem;
@@ -61,38 +17,15 @@
       background: #d1ecf1;
       border-left-color: #17a2b8;
     }
-    .toggle-more {
-      background: none;
-      border: none;
-      color: #667eea;
-      font-weight: bold;
-      cursor: pointer;
-      padding: 0.25rem 0;
-      margin-top: 0.5rem;
+    .tbc-odsp {
+      font-style: italic;
+      border-left-color: rgb(255, 152, 0);
     }
-    nav {
-      text-align: center;
-      margin: 1rem 0 2rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: #667eea;
-      font-weight: 600;
-      margin: 0 1rem;
-    }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #666;
-      padding: 2rem 1rem;
-    }
+    /* rest unchanged */
   </style>
 </head>
 <body>
-  <header>
-    <h1>Ontario Government Payment Dates</h1>
-    <p class="subtitle">Stay informed about benefit payment schedules</p>
-  </header>
+  <!-- header, nav, announcements unchanged -->
 
   <main>
     <nav>
@@ -116,7 +49,7 @@
         "September 29, 2025",
         "October 31, 2025",
         "November 28, 2025",
-        "December 2025 — TBC for the ODSP payment"
+        // TBC December message won't be shown as a date but added separately
       ],
       Trillium: ["July 10, 2025", "August 8, 2025", "September 10, 2025", "October 10, 2025", "November 10, 2025"],
       GST: ["October 3, 2025"],
@@ -133,7 +66,7 @@
     };
 
     function showSpecialAnnouncement() {
-      const month = new Date().getMonth(); // 0-indexed month
+      const month = new Date().getMonth(); // 0-indexed
       const box = document.getElementById("monthly-announcement");
       if (specialMessages[month]) {
         box.style.display = "block";
@@ -148,26 +81,14 @@
       Object.entries(data).forEach(([name, dates]) => {
         const section = document.createElement("section");
         section.className = "payment-card";
-
         const heading = document.createElement("h2");
         heading.textContent = name;
         section.appendChild(heading);
 
-        // Parse dates but allow non-date string (TBC)
-        const upcoming = [];
-        const nonDateItems = [];
-
-        dates.forEach(d => {
-          const parsed = Date.parse(d);
-          if (!isNaN(parsed)) {
-            if (new Date(parsed) >= today) {
-              upcoming.push({ raw: d, date: new Date(parsed) });
-            }
-          } else {
-            // Non-date (e.g. TBC) goes in nonDateItems to show always
-            nonDateItems.push(d);
-          }
-        });
+        // Convert dates and filter upcoming
+        const upcoming = dates
+          .map(d => ({ raw: d, date: new Date(d) }))
+          .filter(d => d.date >= today);
 
         if (upcoming.length > 0) {
           const [first, ...rest] = upcoming;
@@ -177,7 +98,7 @@
           nextEl.textContent = first.raw;
           section.appendChild(nextEl);
 
-          if (rest.length > 0) {
+          if (rest.length > 0 || name === "ODSP") {
             const moreDiv = document.createElement("div");
             moreDiv.style.display = "none";
 
@@ -188,7 +109,13 @@
               moreDiv.appendChild(el);
             });
 
-            section.appendChild(moreDiv);
+            // Add December TBC for ODSP at the end
+            if (name === "ODSP") {
+              const tbcDiv = document.createElement("div");
+              tbcDiv.className = "payment-date tbc-odsp";
+              tbcDiv.textContent = "December 2025 — TBC for the ODSP payment";
+              moreDiv.appendChild(tbcDiv);
+            }
 
             const btn = document.createElement("button");
             btn.className = "toggle-more";
@@ -198,19 +125,26 @@
               moreDiv.style.display = expanded ? "none" : "block";
               btn.textContent = expanded ? "Show All" : "Hide";
             });
+
+            section.appendChild(moreDiv);
             section.appendChild(btn);
           }
+        } else {
+          // If no upcoming payments, just show all dates (optional)
+          dates.forEach(d => {
+            const el = document.createElement("div");
+            el.className = "payment-date";
+            el.textContent = d;
+            section.appendChild(el);
+          });
+          // Add TBC December for ODSP if this is ODSP
+          if (name === "ODSP") {
+            const tbcDiv = document.createElement("div");
+            tbcDiv.className = "payment-date tbc-odsp";
+            tbcDiv.textContent = "December 2025 — TBC for the ODSP payment";
+            section.appendChild(tbcDiv);
+          }
         }
-
-        // Show any non-date lines (e.g. TBC text) below the dates, always visible
-        nonDateItems.forEach(text => {
-          const tbcDiv = document.createElement("div");
-          tbcDiv.className = "payment-date";
-          tbcDiv.style.fontStyle = "italic";
-          tbcDiv.style.borderLeftColor = "#ff9800";
-          tbcDiv.textContent = text;
-          section.appendChild(tbcDiv);
-        });
 
         container.appendChild(section);
       });
