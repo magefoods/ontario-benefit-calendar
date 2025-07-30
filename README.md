@@ -27,6 +27,7 @@ We include estimated deposit times for many major banks across Canada, so you kn
 
 ## Want to Help?
 If you notice any mistakes or have updated info on payment dates, please open an issue or send a pull request. Your contributions are welcome!
+You can also message on Reddit or comment in the posted thread with the changes needed 
 
 ## Disclaimer
 The dates and times shown here are gathered from official sources and community input. However, always double-check with official government websites or your bank for the most accurate info.
