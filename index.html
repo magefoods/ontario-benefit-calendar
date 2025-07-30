@@ -5,7 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ontario Government Payment Dates</title>
   <style>
-    /* ... your existing styles ... */
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(to right, #667eea, #764ba2);
+      padding: 2rem 1rem;
+      text-align: center;
+      color: white;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .announcement {
+      background: #fff3cd;
+      border-left: 4px solid #ffca2c;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .payment-card {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .payment-card h2 {
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
     .payment-date {
       padding: 0.5rem;
       margin-bottom: 0.5rem;
@@ -17,15 +61,38 @@
       background: #d1ecf1;
       border-left-color: #17a2b8;
     }
-    .tbc-odsp {
-      font-style: italic;
-      border-left-color: rgb(255, 152, 0);
+    .toggle-more {
+      background: none;
+      border: none;
+      color: #667eea;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0.25rem 0;
+      margin-top: 0.5rem;
     }
-    /* rest unchanged */
+    nav {
+      text-align: center;
+      margin: 1rem 0 2rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #667eea;
+      font-weight: 600;
+      margin: 0 1rem;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      padding: 2rem 1rem;
+    }
   </style>
 </head>
 <body>
-  <!-- header, nav, announcements unchanged -->
+  <header>
+    <h1>Ontario Government Payment Dates</h1>
+    <p class="subtitle">Stay informed about benefit payment schedules</p>
+  </header>
 
   <main>
     <nav>
@@ -48,15 +115,35 @@
         "August 29, 2025",
         "September 29, 2025",
         "October 31, 2025",
-        "November 28, 2025",
-        // TBC December message won't be shown as a date but added separately
+        "November 28, 2025"
       ],
-      Trillium: ["July 10, 2025", "August 8, 2025", "September 10, 2025", "October 10, 2025", "November 10, 2025"],
+      Trillium: [
+        "July 10, 2025",
+        "August 8, 2025",
+        "September 10, 2025",
+        "October 10, 2025",
+        "November 10, 2025"
+      ],
       GST: ["October 3, 2025"],
-      Disability: ["July 17, 2025", "August 21, 2025", "September 18, 2025", "October 16, 2025"],
-      CCB: ["July 18, 2025", "August 20, 2025", "September 19, 2025", "October 20, 2025"],
+      Disability: [
+        "July 17, 2025",
+        "August 21, 2025",
+        "September 18, 2025",
+        "October 16, 2025"
+      ],
+      CCB: [
+        "July 18, 2025",
+        "August 20, 2025",
+        "September 19, 2025",
+        "October 20, 2025"
+      ],
       CWB: ["July 11, 2025", "October 10, 2025"],
-      CPP: ["July 29, 2025", "August 27, 2025", "September 25, 2025", "October 29, 2025"]
+      CPP: [
+        "July 29, 2025",
+        "August 27, 2025",
+        "September 25, 2025",
+        "October 29, 2025"
+      ]
     };
 
     const specialMessages = {
@@ -85,7 +172,6 @@
         heading.textContent = name;
         section.appendChild(heading);
 
-        // Convert dates and filter upcoming
         const upcoming = dates
           .map(d => ({ raw: d, date: new Date(d) }))
           .filter(d => d.date >= today);
@@ -109,10 +195,11 @@
               moreDiv.appendChild(el);
             });
 
-            // Add December TBC for ODSP at the end
             if (name === "ODSP") {
               const tbcDiv = document.createElement("div");
-              tbcDiv.className = "payment-date tbc-odsp";
+              tbcDiv.className = "payment-date";
+              tbcDiv.style.fontStyle = "italic";
+              tbcDiv.style.borderLeftColor = "rgb(255, 152, 0)";
               tbcDiv.textContent = "December 2025 — TBC for the ODSP payment";
               moreDiv.appendChild(tbcDiv);
             }
@@ -128,21 +215,6 @@
 
             section.appendChild(moreDiv);
             section.appendChild(btn);
-          }
-        } else {
-          // If no upcoming payments, just show all dates (optional)
-          dates.forEach(d => {
-            const el = document.createElement("div");
-            el.className = "payment-date";
-            el.textContent = d;
-            section.appendChild(el);
-          });
-          // Add TBC December for ODSP if this is ODSP
-          if (name === "ODSP") {
-            const tbcDiv = document.createElement("div");
-            tbcDiv.className = "payment-date tbc-odsp";
-            tbcDiv.textContent = "December 2025 — TBC for the ODSP payment";
-            section.appendChild(tbcDiv);
           }
         }
 
