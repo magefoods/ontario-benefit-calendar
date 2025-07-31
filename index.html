@@ -195,7 +195,7 @@
   .bank-info {
     max-width: 1100px;
     margin: 0 auto 1.5rem;
-    padding: 1.5rem 2rem;
+    padding: 2rem 3rem; /* increased padding for bigger size */
     border-radius: 8px;
     border: 1px solid #ddd;
     background-color: #fff;
@@ -214,12 +214,12 @@
   }
   .bank-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* bigger min width */
+    gap: 1.25rem;
   }
   .bank-item {
     background-color: #f7f7f7;
-    padding: 0.75rem 1rem;
+    padding: 1rem 1.25rem; /* bigger padding */
     border-radius: 5px;
     border-left: 4px solid #3c763d;
     color: #2c3e50;
@@ -276,18 +276,23 @@
       <a href="#gst">GST Credit</a>
       <a href="#disability">Disability Benefit</a>
       <a href="#ccb">Child Benefit</a>
-      <a href="#cwb">Workers Benefit</a>
-      <a href="#cpp">CPP Disability</a>
-      <a href="#acwb">Advance Canada Workers Benefit</a>
-      <a href="#cpp2025">Canada Pension Plan 2025</a>
-      <a href="#oas2025">Old Age Security 2025</a>
+      <a href="#cwb">Advance Canada Workers Benefit</a>
+      <a href="#cpp">Canada Pension Plan 2025</a>
+      <a href="#oasis">Old Age Security 2025</a>
       <a href="#banks">Bank Times</a>
       <a href="changelog.html" target="_blank" rel="noopener noreferrer">Changelog</a>
     </div>
   </nav>
 
   <section class="announcements" aria-live="polite" id="announcements-container">
-    <!-- announcements inserted by JS -->
+    <div class="important-note" role="region" aria-label="Important notices">
+      <h3>Important Notices</h3>
+      <ul>
+        <li>Benefit payments can vary by bank processing times.</li>
+        <li>Always check with your financial institution if unsure.</li>
+        <li>Data is subject to change; keep this page bookmarked for updates.</li>
+      </ul>
+    </div>
   </section>
 
   <section class="payment-grid" aria-label="Benefit payment dates">
@@ -299,7 +304,6 @@
       <div class="payment-date">September 29, 2025</div>
       <div class="payment-date">October 31, 2025</div>
       <div class="payment-date">November 28, 2025</div>
-      <button class="expand-btn" aria-expanded="false" aria-controls="odsp">Show All Dates</button>
     </article>
 
     <article class="payment-card" id="trillium" tabindex="0" aria-labelledby="trillium-title">
@@ -310,13 +314,11 @@
       <div class="payment-date">October 10, 2025</div>
       <div class="payment-date">November 10, 2025</div>
       <div class="payment-date">December 10, 2025</div>
-      <button class="expand-btn" aria-expanded="false" aria-controls="trillium">Show All Dates</button>
     </article>
 
     <article class="payment-card" id="gst" tabindex="0" aria-labelledby="gst-title">
       <h2 id="gst-title">GST Credit</h2>
       <div class="payment-date">October 3, 2025</div>
-      <button class="expand-btn" aria-expanded="false" aria-controls="gst">Show All Dates</button>
     </article>
 
     <article class="payment-card" id="disability" tabindex="0" aria-labelledby="disability-title">
@@ -328,7 +330,6 @@
       <div class="payment-date">October 16, 2025</div>
       <div class="payment-date">November 20, 2025</div>
       <div class="payment-date">December 18, 2025</div>
-      <button class="expand-btn" aria-expanded="false" aria-controls="disability">Show All Dates</button>
     </article>
 
     <article class="payment-card" id="ccb" tabindex="0" aria-labelledby="ccb-title">
@@ -339,7 +340,6 @@
       <div class="payment-date">October 20, 2025</div>
       <div class="payment-date">November 20, 2025</div>
       <div class="payment-date">December 12, 2025</div>
-      <button class="expand-btn" aria-expanded="false" aria-controls="ccb">Show All Dates</button>
     </article>
 
     <article class="payment-card" id="cwb" tabindex="0" aria-labelledby="cwb-title">
@@ -347,30 +347,10 @@
       <div class="payment-date">January 10, 2025</div>
       <div class="payment-date">July 11, 2025</div>
       <div class="payment-date">October 10, 2025</div>
-      <button class="expand-btn" aria-expanded="false" aria-controls="cwb">Show All Dates</button>
     </article>
 
     <article class="payment-card" id="cpp" tabindex="0" aria-labelledby="cpp-title">
-      <h2 id="cpp-title">CPP Disability Payments</h2>
-      <div class="payment-date">July 29, 2025</div>
-      <div class="payment-date">August 27, 2025</div>
-      <div class="payment-date">September 25, 2025</div>
-      <div class="payment-date">October 29, 2025</div>
-      <div class="payment-date">November 26, 2025</div>
-      <div class="payment-date">December 22, 2025</div>
-      <button class="expand-btn" aria-expanded="false" aria-controls="cpp">Show All Dates</button>
-    </article>
-
-    <article class="payment-card" id="acwb" tabindex="0" aria-labelledby="acwb-title">
-      <h2 id="acwb-title">Advance Canada Workers Benefit (ACWB)</h2>
-      <div class="payment-date">January 10, 2025</div>
-      <div class="payment-date">July 11, 2025</div>
-      <div class="payment-date">October 10, 2025</div>
-      <button class="expand-btn" aria-expanded="false" aria-controls="acwb">Show All Dates</button>
-    </article>
-
-    <article class="payment-card" id="cpp2025" tabindex="0" aria-labelledby="cpp2025-title">
-      <h2 id="cpp2025-title">Canada Pension Plan 2025</h2>
+      <h2 id="cpp-title">Canada Pension Plan 2025</h2>
       <div class="payment-date">January 29, 2025</div>
       <div class="payment-date">February 26, 2025</div>
       <div class="payment-date">March 27, 2025</div>
@@ -383,11 +363,10 @@
       <div class="payment-date">October 29, 2025</div>
       <div class="payment-date">November 26, 2025</div>
       <div class="payment-date">December 22, 2025</div>
-      <button class="expand-btn" aria-expanded="false" aria-controls="cpp2025">Show All Dates</button>
     </article>
 
-    <article class="payment-card" id="oas2025" tabindex="0" aria-labelledby="oas2025-title">
-      <h2 id="oas2025-title">Old Age Security 2025</h2>
+    <article class="payment-card" id="oasis" tabindex="0" aria-labelledby="oasis-title">
+      <h2 id="oasis-title">Old Age Security 2025</h2>
       <div class="payment-date">January 29, 2025</div>
       <div class="payment-date">February 26, 2025</div>
       <div class="payment-date">March 27, 2025</div>
@@ -400,32 +379,106 @@
       <div class="payment-date">October 29, 2025</div>
       <div class="payment-date">November 26, 2025</div>
       <div class="payment-date">December 22, 2025</div>
-      <button class="expand-btn" aria-expanded="false" aria-controls="oas2025">Show All Dates</button>
     </article>
 
   </section>
 </main>
 
-<section class="bank-info" id="banks" tabindex="0" aria-label="Bank payment times">
-  <h2>Bank Payment Times</h2>
-  <p>These are approximate deposit times for payments:</p>
+<section class="bank-info" id="banks" aria-label="Bank direct deposit times for ODSP" tabindex="0">
+  <h2>Bank Direct Deposit Times for ODSP</h2>
+  <p>Information compiled by community members</p>
+
   <div class="bank-grid">
-    <div class="bank-item">Tangerine – Night before last business day (~4:00–9:30 PM ET)</div>
-    <div class="bank-item">KOHO – Night before last business day (~5:00–7:00 PM ET)</div>
-    <div class="bank-item">PC Financial – Night before last business day (~4:00–7:00 PM ET)</div>
-    <div class="bank-item">TD Bank – Last day of month (~4:00–6:00 PM ET)</div>
-    <div class="bank-item">RBC – Last day of month (~7:00 PM ET)</div>
-    <div class="bank-item">BMO – Last day of month (~7:00 PM ET)</div>
-    <div class="bank-item">CIBC – Last day of month (~7:00 PM ET)</div>
+    <div class="bank-item">Tangerine — Night before (~5–10 PM)</div>
+    <div class="bank-item">KOHO — Night before (~5–9 PM)</div>
+    <div class="bank-item">PC Financial — Night before (~8–10 PM)</div>
+    <div class="bank-item">BMO — Around 12:00–1:00 AM, occasionally ~9 PM; cash withdrawals may unlock only at midnight</div>
+    <div class="bank-item">CIBC — Typically 3:15–4:00 AM, occasionally up to ~6 AM</div>
+    <div class="bank-item">RBC — Typically 3:00–6:00 AM (government benefits around ~5:30 AM)</div>
+    <div class="bank-item">Scotiabank — Generally 3:00–6:00 AM</div>
+    <div class="bank-item">TD Bank — Often within 3:00–6:00 AM, but may vary—TD Early Pay can post up to two days early</div>
+    <div class="bank-item">National Bank — Generally 3:00–6:00 AM</div>
+    <div class="bank-item">Meridian Credit Union — Normally 3:00–6:00 AM, with some experiences near ~8 AM</div>
+    <div class="bank-item">Credit Unions (others) — Mostly 3:00–6:00 AM, varies by local institution</div>
   </div>
 </section>
 
-<footer>
-  <p>© 2025 Ontario Government Payment Dates. Information is approximate and subject to change.</p>
+<footer role="contentinfo">
+  <p>
+    This information is compiled from community sources and official government websites.<br />
+    Always verify payment dates with official sources. Information will be updated for 2026.
+  </p>
+  <p aria-label="Last updated date">Last updated: July 31, 2025</p>
 </footer>
 
 <script>
-  // Announcements by month or day
+  // Payment cards: Show only next upcoming payment date + a "show all" button, highlight next upcoming date
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.payment-card');
+
+    cards.forEach(card => {
+      const dates = Array.from(card.querySelectorAll('.payment-date'));
+      const today = new Date();
+
+      // Filter future or today payment dates (or closest next if none future)
+      let nextDateIndex = dates.findIndex(dateDiv => {
+        const dateText = dateDiv.textContent.trim();
+        const dt = new Date(dateText);
+        return dt >= today;
+      });
+
+      if (nextDateIndex === -1) {
+        // All dates passed - highlight last date
+        nextDateIndex = dates.length - 1;
+      }
+
+      // Show only the next date initially, hide others
+      dates.forEach((dateDiv, idx) => {
+        if (idx === nextDateIndex) {
+          dateDiv.classList.add('highlight-next');
+          dateDiv.style.display = 'block';
+        } else {
+          dateDiv.style.display = 'none';
+          dateDiv.classList.remove('highlight-next');
+        }
+      });
+
+      // Add "Show all" button if there is more than one date
+      if (dates.length > 1) {
+        const btn = document.createElement('button');
+        btn.className = 'expand-btn';
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = 'Show all dates';
+        btn.addEventListener('click', () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          btn.textContent = expanded ? 'Show all dates' : 'Show fewer dates';
+
+          dates.forEach((dateDiv, idx) => {
+            dateDiv.style.display = expanded && idx !== nextDateIndex ? 'none' : 'block';
+          });
+        });
+        card.appendChild(btn);
+      }
+    });
+
+    // Initialize announcements
+    initializeAnnouncements();
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          target.focus({ preventScroll: true });
+        }
+      });
+    });
+  });
+
+  // Month/day scoped announcements appended dynamically
   function initializeAnnouncements() {
     const container = document.getElementById('announcements-container');
     const today = new Date();
@@ -434,6 +487,18 @@
 
     const announcements = [];
 
+    // September announcement (month 8)
+    if (month === 8) {
+      announcements.push(`
+        <div class="important-note" role="region" aria-label="September announcements">
+          <h3>September Important Announcements</h3>
+          <ul>
+            <li>Ensure address is updated to receive cheques on time.</li>
+          </ul>
+        </div>
+      `);
+    }
+
     // November announcement (month 10)
     if (month === 10) {
       announcements.push(`
@@ -441,13 +506,12 @@
           <h3>November Important Announcements</h3>
           <ul>
             <li>ODSP cheques will be mailed starting November 27.</li>
-            <li>Winter Heating Benefit cheques mailed November 12–13.</li>
           </ul>
         </div>
       `);
     }
 
-    // Announcements that show if day is around 20th (for 20th payment dates)
+    // 20th day payment notes if day is between 18 and 22
     if (day >= 18 && day <= 22) {
       announcements.push(`
         <div class="important-note" role="region" aria-label="20th day payment announcements">
@@ -460,130 +524,9 @@
       `);
     }
 
-    container.innerHTML = announcements.join('') || '';
+    // Append announcements after the always visible Important Notices block
+    container.insertAdjacentHTML('beforeend', announcements.join(''));
   }
-
-  // Show only current month payment dates by default with next upcoming date, plus toggle for all dates
-  function initializePayments() {
-    const today = new Date();
-    const currentMonth = today.getMonth(); // 0-based Jan=0
-    const currentYear = today.getFullYear();
-
-    const paymentCards = document.querySelectorAll('.payment-card');
-
-    paymentCards.forEach(card => {
-      const dates = Array.from(card.querySelectorAll('.payment-date'));
-      if (dates.length === 0) return;
-
-      // Parse date text into Date objects and keep div refs
-      const parsedDates = dates.map(div => {
-        const text = div.textContent.trim();
-        return { div, date: new Date(text) };
-      }).sort((a, b) => a.date - b.date);
-
-      // Find the next upcoming date >= today (could be current or future month)
-      const now = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-      let nextUpcoming = parsedDates.find(({date}) => date >= now);
-
-      // Filter dates to show:
-      // Show dates in current month that are >= today, or
-      // If none, show next upcoming future date only
-      const datesToShow = [];
-
-      parsedDates.forEach(({div, date}) => {
-        const sameMonthYear = date.getMonth() === currentMonth && date.getFullYear() === currentYear;
-        const dateIsFutureOrToday = date >= now;
-
-        if (sameMonthYear && dateIsFutureOrToday) {
-          datesToShow.push(div);
-        }
-      });
-
-      // If no current month future dates, show next upcoming date regardless of month
-      if (datesToShow.length === 0 && nextUpcoming) {
-        // Show only the next upcoming date's div
-        parsedDates.forEach(({div}) => {
-          div.style.display = 'none';
-        });
-        nextUpcoming.div.style.display = 'block';
-        nextUpcoming.div.classList.add('highlight-next');
-      } else {
-        // Show only datesToShow and hide others
-        parsedDates.forEach(({div}) => {
-          if (datesToShow.includes(div)) {
-            div.style.display = 'block';
-          } else {
-            div.style.display = 'none';
-          }
-          div.classList.remove('highlight-next');
-        });
-
-        // Highlight next upcoming date among datesToShow
-        const highlightDate = datesToShow
-          .map(div => {
-            return parsedDates.find(pd => pd.div === div);
-          })
-          .find(({date}) => date >= now);
-
-        if (highlightDate) {
-          highlightDate.div.classList.add('highlight-next');
-        }
-      }
-
-      // Setup expand/collapse button
-      const btn = card.querySelector('.expand-btn');
-      if (!btn) return;
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = 'Show All Dates';
-
-      btn.addEventListener('click', () => {
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        if (expanded) {
-          // Collapse: revert to initial state (only future current month or next upcoming date)
-          if (datesToShow.length === 0 && nextUpcoming) {
-            // Only next upcoming shown
-            parsedDates.forEach(({div}) => {
-              div.style.display = 'none';
-              div.classList.remove('highlight-next');
-            });
-            nextUpcoming.div.style.display = 'block';
-            nextUpcoming.div.classList.add('highlight-next');
-          } else {
-            // Show all future current month dates
-            parsedDates.forEach(({div}) => {
-              if (datesToShow.includes(div)) {
-                div.style.display = 'block';
-              } else {
-                div.style.display = 'none';
-              }
-              div.classList.remove('highlight-next');
-            });
-            const highlightDate = datesToShow
-              .map(div => parsedDates.find(pd => pd.div === div))
-              .find(({date}) => date >= now);
-            if (highlightDate) {
-              highlightDate.div.classList.add('highlight-next');
-            }
-          }
-          btn.setAttribute('aria-expanded', 'false');
-          btn.textContent = 'Show All Dates';
-        } else {
-          // Expand: show all dates and remove highlight
-          parsedDates.forEach(({div}) => {
-            div.style.display = 'block';
-            div.classList.remove('highlight-next');
-          });
-          btn.setAttribute('aria-expanded', 'true');
-          btn.textContent = 'Show Current Month';
-        }
-      });
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    initializePayments();
-    initializeAnnouncements();
-  });
 </script>
 
 </body>
