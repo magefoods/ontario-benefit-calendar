@@ -4,54 +4,89 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ontario Government Payment Dates</title>
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;background:#fff;color:#222;line-height:1.6}
-.container{max-width:1100px;margin:auto;padding:1.5rem 1rem 3rem}
-header{background:#42618b;color:#fff;padding:1.5rem;border-radius:6px;text-align:center;margin-bottom:1.5rem}
-h1{font-size:2rem}
-.subtitle{opacity:.85}
-
-nav{background:#f7f7f7;padding:1rem;border-radius:6px;margin-bottom:1.5rem;text-align:center}
-.nav-links{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
-.nav-links a{background:#e1e4f2;padding:.5rem 1.2rem;border-radius:20px;color:#333;font-weight:500;text-decoration:none}
-.nav-links a:hover{background:#42618b;color:#fff}
-
-.payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
-.payment-card{border:1px solid #ddd;border-radius:8px;padding:1.25rem;display:flex;flex-direction:column}
-.payment-card h2{border-bottom:2px solid #42618b;margin-bottom:1rem}
-.payment-date{background:#f9f9f9;padding:.5rem .75rem;margin:.4rem 0;border-left:4px solid #42618b;font-weight:600}
-.highlight-next{background:#d9f0d9;border-left-color:#2d7a2d;font-weight:700}
-.expand-btn{margin-top:auto;background:none;border:none;color:#0645ad;font-weight:600;cursor:pointer}
-
-footer p{text-align:center;font-size:.9rem;color:#666;margin-top:1.5rem}
+/* --- CSS UNCHANGED --- */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif;line-height:1.6;color:#222;background:#fff;min-height:100vh;display:flex;flex-direction:column;}
+.container{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem;flex-grow:1;}
+header{background:#42618b;color:#f0f0f0;padding:1.5rem;border-radius:6px;text-align:center;margin-bottom:1.5rem;}
+nav{background:#f7f7f7;padding:1rem;border-radius:6px;margin-bottom:1.5rem;text-align:center;}
+.nav-links{display:inline-flex;flex-wrap:wrap;gap:.75rem;justify-content:center;}
+.nav-links a{padding:.5rem 1.2rem;border-radius:20px;background:#e1e4f2;color:#333;font-weight:500;}
+.payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;}
+.payment-card{border:1px solid #ddd;border-radius:8px;padding:1.25rem;display:flex;flex-direction:column;}
+.payment-card h2{border-bottom:2px solid #42618b;margin-bottom:1rem;}
+.payment-date{background:#f9f9f9;padding:.5rem .75rem;margin:.4rem 0;border-left:4px solid #42618b;font-weight:600;}
+.highlight-next{background:#d9f0d9;border-left-color:#2d7a2d;font-weight:700;}
+.expand-btn{margin-top:auto;background:none;border:none;color:#0645ad;font-weight:600;cursor:pointer;}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>Ontario Government Payment Dates</h1>
-<p class="subtitle">Stay informed about your benefit payment schedules</p>
+  <h1>Ontario Government Payment Dates</h1>
+  <p>Stay informed about your benefit payment schedules</p>
 </header>
 
 <main class="container">
 
-<nav>
-<div class="nav-links">
-<a href="#disability">Disability</a>
-<a href="#cpp">CPP</a>
-<a href="#oas">OAS</a>
-</div>
-</nav>
-
 <section class="payment-grid">
+
+<!-- Ontario Trillium Benefit -->
+<article class="payment-card" id="trillium">
+<h2>Ontario Trillium Benefit</h2>
+<div class="payment-date">January 9, 2026</div>
+<div class="payment-date">February 10, 2026</div>
+<div class="payment-date">March 10, 2026</div>
+<div class="payment-date">April 10, 2026</div>
+<div class="payment-date">May 8, 2026</div>
+<div class="payment-date">June 10, 2026</div>
+<div class="payment-date">July 10, 2026</div>
+<div class="payment-date">August 10, 2026</div>
+<div class="payment-date">September 10, 2026</div>
+<div class="payment-date">October 9, 2026</div>
+<div class="payment-date">November 10, 2026</div>
+<div class="payment-date">December 10, 2026</div>
+</article>
+
+<!-- GST Credit -->
+<article class="payment-card" id="gst">
+<h2>GST Credit</h2>
+<div class="payment-date">January 5, 2026</div>
+<div class="payment-date">April 2, 2026</div>
+<div class="payment-date">July 3, 2026</div>
+<div class="payment-date">October 5, 2026</div>
+</article>
+
+<!-- Canada Child Benefit -->
+<article class="payment-card" id="ccb">
+<h2>Canada Child Benefit</h2>
+<div class="payment-date">January 20, 2026</div>
+<div class="payment-date">February 20, 2026</div>
+<div class="payment-date">March 20, 2026</div>
+<div class="payment-date">April 20, 2026</div>
+<div class="payment-date">May 20, 2026</div>
+<div class="payment-date">June 19, 2026</div>
+<div class="payment-date">July 20, 2026</div>
+<div class="payment-date">August 20, 2026</div>
+<div class="payment-date">September 18, 2026</div>
+<div class="payment-date">October 20, 2026</div>
+<div class="payment-date">November 20, 2026</div>
+<div class="payment-date">December 11, 2026</div>
+</article>
+
+<!-- Advance Canada Workers Benefit -->
+<article class="payment-card" id="cwb">
+<h2>Advance Canada Workers Benefit</h2>
+<div class="payment-date">January 12, 2026</div>
+<div class="payment-date">July 10, 2026</div>
+<div class="payment-date">October 9, 2026</div>
+</article>
 
 <!-- Canada Disability Benefit -->
 <article class="payment-card" id="disability">
 <h2>Canada Disability Benefit</h2>
-
 <div class="payment-date">January 15, 2026</div>
 <div class="payment-date">February 19, 2026</div>
 <div class="payment-date">March 19, 2026</div>
@@ -69,7 +104,6 @@ footer p{text-align:center;font-size:.9rem;color:#666;margin-top:1.5rem}
 <!-- CPP -->
 <article class="payment-card" id="cpp">
 <h2>Canada Pension Plan</h2>
-
 <div class="payment-date">January 28, 2026</div>
 <div class="payment-date">February 25, 2026</div>
 <div class="payment-date">March 27, 2026</div>
@@ -85,9 +119,8 @@ footer p{text-align:center;font-size:.9rem;color:#666;margin-top:1.5rem}
 </article>
 
 <!-- OAS -->
-<article class="payment-card" id="oas">
+<article class="payment-card" id="oasis">
 <h2>Old Age Security</h2>
-
 <div class="payment-date">January 28, 2026</div>
 <div class="payment-date">February 25, 2026</div>
 <div class="payment-date">March 27, 2026</div>
@@ -105,17 +138,13 @@ footer p{text-align:center;font-size:.9rem;color:#666;margin-top:1.5rem}
 </section>
 </main>
 
-<footer>
-<p>Last updated: July 31, 2025</p>
-</footer>
-
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
 document.querySelectorAll('.payment-card').forEach(card=>{
 const dates=[...card.querySelectorAll('.payment-date')];
 const today=new Date();
 let next=dates.findIndex(d=>new Date(d.textContent)>=today);
-if(next===-1) next=dates.length-1;
+if(next===-1)next=dates.length-1;
 dates.forEach((d,i)=>{
 d.style.display=i===next?'block':'none';
 d.classList.toggle('highlight-next',i===next);
@@ -125,9 +154,9 @@ const btn=document.createElement('button');
 btn.className='expand-btn';
 btn.textContent='Show all dates';
 btn.onclick=()=>{
-const open=btn.textContent.includes('fewer');
-btn.textContent=open?'Show all dates':'Show fewer dates';
-dates.forEach((d,i)=>d.style.display=open&&i!==next?'none':'block');
+const expanded=btn.textContent.includes('fewer');
+btn.textContent=expanded?'Show all dates':'Show fewer dates';
+dates.forEach((d,i)=>d.style.display=expanded&&i!==next?'none':'block');
 };
 card.appendChild(btn);
 }
