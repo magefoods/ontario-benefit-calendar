@@ -4,538 +4,135 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ontario Government Payment Dates</title>
+
 <style>
-  /* Reset & base */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, sans-serif;
-    line-height: 1.6;
-    color: #222;
-    background-color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  a {
-    color: #0645ad;
-    text-decoration: underline;
-  }
-  a:hover,
-  a:focus {
-    color: #0b3d91;
-    outline: none;
-  }
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 1.5rem 1rem 3rem;
-    flex-grow: 1;
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;background:#fff;color:#222;line-height:1.6}
+.container{max-width:1100px;margin:auto;padding:1.5rem 1rem 3rem}
+header{background:#42618b;color:#fff;padding:1.5rem;border-radius:6px;text-align:center;margin-bottom:1.5rem}
+h1{font-size:2rem}
+.subtitle{opacity:.85}
 
-  /* Header */
-  header {
-    background-color: #42618b;
-    color: #f0f0f0;
-    padding: 1.5rem 1rem;
-    margin-bottom: 1.5rem;
-    border-radius: 6px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    font-weight: 600;
-    font-size: 1.25rem;
-    letter-spacing: 0.03em;
-  }
-  h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-  }
-  .subtitle {
-    font-size: 1.1rem;
-    opacity: 0.85;
-  }
+nav{background:#f7f7f7;padding:1rem;border-radius:6px;margin-bottom:1.5rem;text-align:center}
+.nav-links{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+.nav-links a{background:#e1e4f2;padding:.5rem 1.2rem;border-radius:20px;color:#333;font-weight:500;text-decoration:none}
+.nav-links a:hover{background:#42618b;color:#fff}
 
-  /* Navigation */
-  nav {
-    background-color: #f7f7f7;
-    padding: 1rem;
-    border-radius: 6px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-  .nav-links {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
-  }
-  .nav-links a {
-    padding: 0.5rem 1.2rem;
-    border-radius: 20px;
-    background-color: #e1e4f2;
-    color: #333;
-    font-weight: 500;
-    border: 1px solid transparent;
-    transition: background-color 0.25s ease, border-color 0.25s ease;
-  }
-  .nav-links a:hover,
-  .nav-links a:focus {
-    background-color: #42618b;
-    color: white;
-    border-color: #42618b;
-    outline: none;
-  }
+.payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.payment-card{border:1px solid #ddd;border-radius:8px;padding:1.25rem;display:flex;flex-direction:column}
+.payment-card h2{border-bottom:2px solid #42618b;margin-bottom:1rem}
+.payment-date{background:#f9f9f9;padding:.5rem .75rem;margin:.4rem 0;border-left:4px solid #42618b;font-weight:600}
+.highlight-next{background:#d9f0d9;border-left-color:#2d7a2d;font-weight:700}
+.expand-btn{margin-top:auto;background:none;border:none;color:#0645ad;font-weight:600;cursor:pointer}
 
-  /* Announcements */
-  .announcements {
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-  .important-note {
-    background-color: #fff3cd;
-    border: 1px solid #ffeeba;
-    color: #856404;
-    padding: 1rem 1.5rem;
-    border-radius: 6px;
-    margin: 1rem 0;
-    text-align: left;
-  }
-  .important-note h3 {
-    margin-bottom: 0.8rem;
-    font-size: 1.25rem;
-    color: #6b4b0f;
-  }
-  .important-note ul {
-    margin-left: 1.5rem;
-  }
-  .important-note ul li {
-    margin-bottom: 0.3rem;
-  }
-  .important-note a {
-    color: #0645ad;
-  }
-
-  /* Payment cards grid */
-  .payment-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.25rem;
-    margin-bottom: 3rem;
-  }
-  .payment-card {
-    background-color: #fff;
-    padding: 1.25rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: none;
-    transition: box-shadow 0.25s ease;
-    display: flex;
-    flex-direction: column;
-  }
-  .payment-card:focus-within,
-  .payment-card:hover {
-    box-shadow: 0 4px 8px rgba(66, 97, 139, 0.25);
-    outline: none;
-  }
-  .payment-card h2 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #42618b;
-    padding-bottom: 0.3rem;
-    color: #2a2a2a;
-  }
-
-  /* Payment dates */
-  .payment-date {
-    background-color: #f9f9f9;
-    padding: 0.5rem 0.75rem;
-    margin: 0.4rem 0;
-    border-left: 4px solid #42618b;
-    font-weight: 600;
-    color: #333;
-    border-radius: 3px;
-    cursor: default;
-    user-select: none;
-  }
-  .highlight-next {
-    background-color: #d9f0d9;
-    border-left-color: #2d7a2d;
-    font-weight: 700;
-    color: #1d531d;
-  }
-
-  /* Expand button */
-  .expand-btn {
-    margin-top: auto;
-    align-self: flex-start;
-    background: none;
-    border: none;
-    color: #0645ad;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0.25rem 0;
-    user-select: none;
-    transition: color 0.2s ease;
-  }
-  .expand-btn:hover,
-  .expand-btn:focus {
-    color: #0b3d91;
-    outline: none;
-  }
-
-  /* Bank info pinned at bottom */
-  .bank-info {
-    max-width: 1100px;
-    margin: 0 auto 1.5rem;
-    padding: 2rem 3rem; /* increased padding for bigger size */
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    color: #2a2a2a;
-    font-weight: 600;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  .bank-info h2 {
-    margin-bottom: 0.8rem;
-    color: #2a2a2a;
-  }
-  .bank-info p {
-    color: #555;
-    margin-bottom: 1rem;
-    font-weight: 400;
-  }
-  .bank-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* bigger min width */
-    gap: 1.25rem;
-  }
-  .bank-item {
-    background-color: #f7f7f7;
-    padding: 1rem 1.25rem; /* bigger padding */
-    border-radius: 5px;
-    border-left: 4px solid #3c763d;
-    color: #2c3e50;
-    font-weight: 600;
-    user-select: none;
-  }
-
-  /* Footer text */
-  footer p {
-    text-align: center;
-    font-weight: 500;
-    font-size: 0.9rem;
-    color: #666;
-    border-top: 1px solid #ddd;
-    padding-top: 1rem;
-    margin-top: 2rem;
-    letter-spacing: 0.02em;
-  }
-
-  /* Responsive tweaks */
-  @media (max-width: 768px) {
-    .container {
-      padding: 1rem 0.75rem 2rem;
-    }
-    h1 {
-      font-size: 1.75rem;
-    }
-    .nav-links {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .payment-grid {
-      grid-template-columns: 1fr;
-    }
-    .bank-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+footer p{text-align:center;font-size:.9rem;color:#666;margin-top:1.5rem}
 </style>
 </head>
+
 <body>
 
-<header role="banner">
-  <h1>Ontario Government Payment Dates</h1>
-  <p class="subtitle">Stay informed about your benefit payment schedules</p>
+<header>
+<h1>Ontario Government Payment Dates</h1>
+<p class="subtitle">Stay informed about your benefit payment schedules</p>
 </header>
 
-<main class="container" role="main">
+<main class="container">
 
-  <nav role="navigation" aria-label="Benefit payment sections">
-    <div class="nav-links">
-      <a href="#odsp">ODSP</a>
-      <a href="#trillium">Trillium Benefit</a>
-      <a href="#gst">GST Credit</a>
-      <a href="#disability">Disability Benefit</a>
-      <a href="#ccb">Child Benefit</a>
-      <a href="#cwb">Advance Canada Workers Benefit</a>
-      <a href="#cpp">Canada Pension Plan 2025</a>
-      <a href="#oasis">Old Age Security 2025</a>
-      <a href="#banks">Bank Times</a>
-      <a href="changelog.html" target="_blank" rel="noopener noreferrer">Changelog</a>
-    </div>
-  </nav>
+<nav>
+<div class="nav-links">
+<a href="#disability">Disability</a>
+<a href="#cpp">CPP</a>
+<a href="#oas">OAS</a>
+</div>
+</nav>
 
-  <section class="announcements" aria-live="polite" id="announcements-container">
-    <div class="important-note" role="region" aria-label="Important notices">
-      <h3>Important Notices</h3>
-      <ul>
-        <li>Benefit payments can vary by bank processing times.</li>
-        <li>Always check with your financial institution if unsure.</li>
-        <li>Data is subject to change; keep this page bookmarked for updates.</li>
-      </ul>
-    </div>
-  </section>
+<section class="payment-grid">
 
-  <section class="payment-grid" aria-label="Benefit payment dates">
+<!-- Canada Disability Benefit -->
+<article class="payment-card" id="disability">
+<h2>Canada Disability Benefit</h2>
 
-    <article class="payment-card" id="odsp" tabindex="0" aria-labelledby="odsp-title">
-      <h2 id="odsp-title">ODSP Payment Dates</h2>
-      <div class="payment-date">July 31, 2025</div>
-      <div class="payment-date">August 29, 2025</div>
-      <div class="payment-date">September 29, 2025</div>
-      <div class="payment-date">October 31, 2025</div>
-      <div class="payment-date">November 28, 2025</div>
-    </article>
+<div class="payment-date">January 15, 2026</div>
+<div class="payment-date">February 19, 2026</div>
+<div class="payment-date">March 19, 2026</div>
+<div class="payment-date">April 16, 2026</div>
+<div class="payment-date">May 21, 2026</div>
+<div class="payment-date">June 18, 2026</div>
+<div class="payment-date">July 20, 2026</div>
+<div class="payment-date">August 20, 2026</div>
+<div class="payment-date">September 17, 2026</div>
+<div class="payment-date">October 15, 2026</div>
+<div class="payment-date">November 19, 2026</div>
+<div class="payment-date">December 17, 2026</div>
+</article>
 
-    <article class="payment-card" id="trillium" tabindex="0" aria-labelledby="trillium-title">
-      <h2 id="trillium-title">Ontario Trillium Benefit</h2>
-      <div class="payment-date">July 10, 2025</div>
-      <div class="payment-date">August 8, 2025</div>
-      <div class="payment-date">September 10, 2025</div>
-      <div class="payment-date">October 10, 2025</div>
-      <div class="payment-date">November 10, 2025</div>
-      <div class="payment-date">December 10, 2025</div>
-    </article>
+<!-- CPP -->
+<article class="payment-card" id="cpp">
+<h2>Canada Pension Plan</h2>
 
-    <article class="payment-card" id="gst" tabindex="0" aria-labelledby="gst-title">
-      <h2 id="gst-title">GST Credit</h2>
-      <div class="payment-date">October 3, 2025</div>
-    </article>
+<div class="payment-date">January 28, 2026</div>
+<div class="payment-date">February 25, 2026</div>
+<div class="payment-date">March 27, 2026</div>
+<div class="payment-date">April 28, 2026</div>
+<div class="payment-date">May 27, 2026</div>
+<div class="payment-date">June 26, 2026</div>
+<div class="payment-date">July 29, 2026</div>
+<div class="payment-date">August 27, 2026</div>
+<div class="payment-date">September 25, 2026</div>
+<div class="payment-date">October 28, 2026</div>
+<div class="payment-date">November 26, 2026</div>
+<div class="payment-date">December 22, 2026</div>
+</article>
 
-    <article class="payment-card" id="disability" tabindex="0" aria-labelledby="disability-title">
-      <h2 id="disability-title">Canadian Disability Benefit</h2>
-      <p style="font-size: 0.9rem; color: #6c757d; margin-bottom: 1rem;" id="disability-desc">(Linked to the DTC)</p>
-      <div class="payment-date">July 17, 2025</div>
-      <div class="payment-date">August 21, 2025</div>
-      <div class="payment-date">September 18, 2025</div>
-      <div class="payment-date">October 16, 2025</div>
-      <div class="payment-date">November 20, 2025</div>
-      <div class="payment-date">December 18, 2025</div>
-    </article>
+<!-- OAS -->
+<article class="payment-card" id="oas">
+<h2>Old Age Security</h2>
 
-    <article class="payment-card" id="ccb" tabindex="0" aria-labelledby="ccb-title">
-      <h2 id="ccb-title">Canada Child Benefit</h2>
-      <div class="payment-date">July 18, 2025</div>
-      <div class="payment-date">August 20, 2025</div>
-      <div class="payment-date">September 19, 2025</div>
-      <div class="payment-date">October 20, 2025</div>
-      <div class="payment-date">November 20, 2025</div>
-      <div class="payment-date">December 12, 2025</div>
-    </article>
+<div class="payment-date">January 28, 2026</div>
+<div class="payment-date">February 25, 2026</div>
+<div class="payment-date">March 27, 2026</div>
+<div class="payment-date">April 28, 2026</div>
+<div class="payment-date">May 27, 2026</div>
+<div class="payment-date">June 26, 2026</div>
+<div class="payment-date">July 29, 2026</div>
+<div class="payment-date">August 27, 2026</div>
+<div class="payment-date">September 25, 2026</div>
+<div class="payment-date">October 28, 2026</div>
+<div class="payment-date">November 26, 2026</div>
+<div class="payment-date">December 22, 2026</div>
+</article>
 
-    <article class="payment-card" id="cwb" tabindex="0" aria-labelledby="cwb-title">
-      <h2 id="cwb-title">Advance Canada Workers Benefit</h2>
-      <div class="payment-date">January 10, 2025</div>
-      <div class="payment-date">July 11, 2025</div>
-      <div class="payment-date">October 10, 2025</div>
-    </article>
-
-    <article class="payment-card" id="cpp" tabindex="0" aria-labelledby="cpp-title">
-      <h2 id="cpp-title">Canada Pension Plan 2025</h2>
-      <div class="payment-date">January 29, 2025</div>
-      <div class="payment-date">February 26, 2025</div>
-      <div class="payment-date">March 27, 2025</div>
-      <div class="payment-date">April 28, 2025</div>
-      <div class="payment-date">May 28, 2025</div>
-      <div class="payment-date">June 26, 2025</div>
-      <div class="payment-date">July 29, 2025</div>
-      <div class="payment-date">August 27, 2025</div>
-      <div class="payment-date">September 25, 2025</div>
-      <div class="payment-date">October 29, 2025</div>
-      <div class="payment-date">November 26, 2025</div>
-      <div class="payment-date">December 22, 2025</div>
-    </article>
-
-    <article class="payment-card" id="oasis" tabindex="0" aria-labelledby="oasis-title">
-      <h2 id="oasis-title">Old Age Security 2025</h2>
-      <div class="payment-date">January 29, 2025</div>
-      <div class="payment-date">February 26, 2025</div>
-      <div class="payment-date">March 27, 2025</div>
-      <div class="payment-date">April 28, 2025</div>
-      <div class="payment-date">May 28, 2025</div>
-      <div class="payment-date">June 26, 2025</div>
-      <div class="payment-date">July 29, 2025</div>
-      <div class="payment-date">August 27, 2025</div>
-      <div class="payment-date">September 25, 2025</div>
-      <div class="payment-date">October 29, 2025</div>
-      <div class="payment-date">November 26, 2025</div>
-      <div class="payment-date">December 22, 2025</div>
-    </article>
-
-  </section>
+</section>
 </main>
 
-<section class="bank-info" id="banks" aria-label="Bank direct deposit times for ODSP" tabindex="0">
-  <h2>Bank Direct Deposit Times for ODSP</h2>
-  <p>Information compiled by community members</p>
-
-  <div class="bank-grid">
-    <div class="bank-item">Tangerine — Night before (~5–10 PM)</div>
-    <div class="bank-item">KOHO — Night before (~5–9 PM)</div>
-    <div class="bank-item">PC Financial — Night before (~8–10 PM)</div>
-    <div class="bank-item">BMO — Around 12:00–1:00 AM, occasionally ~9 PM; cash withdrawals may unlock only at midnight</div>
-    <div class="bank-item">CIBC — Typically 3:15–4:00 AM, occasionally up to ~6 AM</div>
-    <div class="bank-item">RBC — Typically 3:00–6:00 AM (government benefits around ~5:30 AM)</div>
-    <div class="bank-item">Scotiabank — Generally 3:00–6:00 AM</div>
-    <div class="bank-item">TD Bank — Often within 3:00–6:00 AM, but may vary—TD Early Pay can post up to two days early</div>
-    <div class="bank-item">National Bank — Generally 3:00–6:00 AM</div>
-    <div class="bank-item">Meridian Credit Union — Normally 3:00–6:00 AM, with some experiences near ~8 AM</div>
-    <div class="bank-item">Credit Unions (others) — Mostly 3:00–6:00 AM, varies by local institution</div>
-  </div>
-</section>
-
-<footer role="contentinfo">
-  <p>
-    This information is compiled from community sources and official government websites.<br />
-    Always verify payment dates with official sources. Information will be updated for 2026.
-  </p>
-  <p aria-label="Last updated date">Last updated: July 31, 2025</p>
-  
-  <!-- Default gnrcounter.com code for https://magefoods.github.io/ontario-benefit-calendar/ -->
-  <div style="text-align: center; margin-top: 1rem;">
-    <script language="JavaScript" type="text/javascript" src="https://gnrcounter.com/counter.php?accId=e416be1eff44897a3d1736aa90a9ff04"></script>
-    <noscript>
-      <a href="https://gnrcounter.com" title="Web Analytics">Web Analytics</a>
-    </noscript>
-  </div>
-  <!-- End of gnrcounter.com Code -->
+<footer>
+<p>Last updated: July 31, 2025</p>
 </footer>
 
 <script>
-  // Payment cards: Show only next upcoming payment date + a "show all" button, highlight next upcoming date
-  document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.payment-card');
-
-    cards.forEach(card => {
-      const dates = Array.from(card.querySelectorAll('.payment-date'));
-      const today = new Date();
-
-      // Filter future or today payment dates (or closest next if none future)
-      let nextDateIndex = dates.findIndex(dateDiv => {
-        const dateText = dateDiv.textContent.trim();
-        const dt = new Date(dateText);
-        return dt >= today;
-      });
-
-      if (nextDateIndex === -1) {
-        // All dates passed - highlight last date
-        nextDateIndex = dates.length - 1;
-      }
-
-      // Show only the next date initially, hide others
-      dates.forEach((dateDiv, idx) => {
-        if (idx === nextDateIndex) {
-          dateDiv.classList.add('highlight-next');
-          dateDiv.style.display = 'block';
-        } else {
-          dateDiv.style.display = 'none';
-          dateDiv.classList.remove('highlight-next');
-        }
-      });
-
-      // Add "Show all" button if there is more than one date
-      if (dates.length > 1) {
-        const btn = document.createElement('button');
-        btn.className = 'expand-btn';
-        btn.setAttribute('aria-expanded', 'false');
-        btn.textContent = 'Show all dates';
-        btn.addEventListener('click', () => {
-          const expanded = btn.getAttribute('aria-expanded') === 'true';
-          btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-          btn.textContent = expanded ? 'Show all dates' : 'Show fewer dates';
-
-          dates.forEach((dateDiv, idx) => {
-            dateDiv.style.display = expanded && idx !== nextDateIndex ? 'none' : 'block';
-          });
-        });
-        card.appendChild(btn);
-      }
-    });
-
-    // Initialize announcements
-    initializeAnnouncements();
-
-    // Smooth scroll for nav links
-    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          target.focus({ preventScroll: true });
-        }
-      });
-    });
-  });
-
-  // Month/day scoped announcements appended dynamically
-  function initializeAnnouncements() {
-    const container = document.getElementById('announcements-container');
-    const today = new Date();
-    const month = today.getMonth(); // 0-based (0=Jan)
-    const day = today.getDate();
-
-    const announcements = [];
-
-    // September announcement (month 8)
-    if (month === 8) {
-      announcements.push(`
-        <div class="important-note" role="region" aria-label="September announcements">
-          <h3>September Important Announcements</h3>
-          <ul>
-            <li>Ensure address is updated to receive cheques on time.</li>
-          </ul>
-        </div>
-      `);
-    }
-
-    // November announcement (month 10)
-    if (month === 10) {
-      announcements.push(`
-        <div class="important-note" role="region" aria-label="November announcements">
-          <h3>November Important Announcements</h3>
-          <ul>
-            <li>ODSP cheques will be mailed starting November 27.</li>
-          </ul>
-        </div>
-      `);
-    }
-
-    // 20th day payment notes if day is between 18 and 22
-    if (day >= 18 && day <= 22) {
-      announcements.push(`
-        <div class="important-note" role="region" aria-label="20th day payment announcements">
-          <h3>20th Day Payment Notes</h3>
-          <ul>
-            <li>Payments scheduled on the 20th may experience delays around holidays.</li>
-            <li>Check your bank statements and contact your financial institution for details.</li>
-          </ul>
-        </div>
-      `);
-    }
-
-    // Append announcements after the always visible Important Notices block
-    container.insertAdjacentHTML('beforeend', announcements.join(''));
-  }
+document.addEventListener('DOMContentLoaded',()=>{
+document.querySelectorAll('.payment-card').forEach(card=>{
+const dates=[...card.querySelectorAll('.payment-date')];
+const today=new Date();
+let next=dates.findIndex(d=>new Date(d.textContent)>=today);
+if(next===-1) next=dates.length-1;
+dates.forEach((d,i)=>{
+d.style.display=i===next?'block':'none';
+d.classList.toggle('highlight-next',i===next);
+});
+if(dates.length>1){
+const btn=document.createElement('button');
+btn.className='expand-btn';
+btn.textContent='Show all dates';
+btn.onclick=()=>{
+const open=btn.textContent.includes('fewer');
+btn.textContent=open?'Show all dates':'Show fewer dates';
+dates.forEach((d,i)=>d.style.display=open&&i!==next?'none':'block');
+};
+card.appendChild(btn);
+}
+});
+});
 </script>
 
 </body>
