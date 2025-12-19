@@ -297,12 +297,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function initializeAnnouncements(){
     const container=document.getElementById('announcements-container');
     const month=today.getMonth();
-    const day=today.getDate();
     const announcements=[];
 
-    if(month===8){ announcements.push(`<div class="important-note" role="region" aria-label="September announcements"><h3>September Important Announcements</h3><ul><li>Ensure address is updated to receive cheques on time.</li></ul></div>`); }
-    if(month===10){ announcements.push(`<div class="important-note" role="region" aria-label="November announcements"><h3>November Important Announcements</h3><ul><li>ODSP cheques will be mailed starting November 27.</li></ul></div>`); }
-    if(day>=18 && day<=22){ announcements.push(`<div class="important-note" role="region" aria-label="20th day payment announcements"><h3>20th Day Payment Notes</h3><ul><li>Payments scheduled on the 20th may experience delays around holidays.</li><li>Check your bank statements and contact your financial institution for details.</li></ul></div>`); }
+    if(month===8){ 
+        announcements.push(`<div class="important-note" role="region" aria-label="September announcements"><h3>September Important Announcements</h3><ul><li>Ensure address is updated to receive cheques on time.</li></ul></div>`); 
+    }
+    if(month===10){ 
+        announcements.push(`<div class="important-note" role="region" aria-label="November announcements"><h3>November Important Announcements</h3><ul><li>ODSP cheques will be mailed starting November 27.</li></ul></div>`); 
+    }
 
     container.insertAdjacentHTML('beforeend', announcements.join(''));
   }
