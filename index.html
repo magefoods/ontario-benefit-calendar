@@ -280,10 +280,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Show "Payment Today" banner if applicable
   if(paymentToday) document.getElementById('payment-today-banner').style.display='block';
 
-  // Smooth scroll for nav links
   document.querySelectorAll('nav a[href^="#"]').forEach(link=>{
     link.addEventListener('click', e=>{
       e.preventDefault();
@@ -295,18 +293,34 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeAnnouncements();
 
   function initializeAnnouncements(){
-    const container=document.getElementById('announcements-container');
-    const month=today.getMonth();
-    const announcements=[];
+    const container = document.getElementById('announcements-container');
+    const month = today.getMonth(); // 0-11
 
-    if(month===8){ 
-        announcements.push(`<div class="important-note" role="region" aria-label="September announcements"><h3>September Important Announcements</h3><ul><li>Ensure address is updated to receive cheques on time.</li></ul></div>`); 
-    }
-    if(month===10){ 
-        announcements.push(`<div class="important-note" role="region" aria-label="November announcements"><h3>November Important Announcements</h3><ul><li>ODSP cheques will be mailed starting November 27.</li></ul></div>`); 
-    }
+    const monthlyAnnouncements = {
+        0: ["Check January benefit dates and plan for upcoming payments."],
+        1: ["Check February benefit dates and plan for upcoming payments."],
+        2: ["Check March benefit dates and plan for upcoming payments."],
+        3: ["Check April benefit dates and plan for upcoming payments."],
+        4: ["Check May benefit dates and plan for upcoming payments."],
+        5: ["Check June benefit dates and plan for upcoming payments."],
+        6: ["Check July benefit dates and plan for upcoming payments."],
+        7: ["Check August benefit dates and plan for upcoming payments."],
+        8: ["Check September benefit dates and plan for upcoming payments."],
+        9: ["Check October benefit dates and plan for upcoming payments."],
+        10: ["Check November benefit dates and plan for upcoming payments."],
+        11: ["Check December benefit dates and plan for upcoming payments."]
+    };
 
-    container.insertAdjacentHTML('beforeend', announcements.join(''));
+    if(monthlyAnnouncements[month]){
+        const messages = monthlyAnnouncements[month];
+        messages.forEach(msg => {
+            const note = `<div class="important-note" role="region" aria-label="${today.toLocaleString('default', { month: 'long' })} announcements">
+                              <h3>${today.toLocaleString('default', { month: 'long' })} Payment Notes</h3>
+                              <ul><li>${msg}</li></ul>
+                          </div>`;
+            container.insertAdjacentHTML('beforeend', note);
+        });
+    }
   }
 });
 </script>
