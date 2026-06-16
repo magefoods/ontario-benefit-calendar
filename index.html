@@ -1,112 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ontario Government Payment Dates 2026-2027</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; line-height:1.6; color:#222; background-color:#f4f7f6; padding:20px; }
-  .container { max-width:900px; margin:0 auto; }
-  header { background-color:#42618b; color:white; padding:2rem; border-radius:8px; text-align:center; margin-bottom:2rem; }
-  .payment-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
-  .payment-card { background:#fff; padding:1.5rem; border-radius:8px; border:1px solid #ddd; }
-  h2 { font-size:1.2rem; margin-bottom:1rem; border-bottom:2px solid #42618b; padding-bottom:0.5rem; }
-  .payment-date { background:#f9f9f9; padding:0.5rem; margin:0.3rem 0; border-left:4px solid #42618b; font-weight:600; }
-  .note { font-size:0.8rem; color:#666; margin-top:10px; font-style:italic; }
+  .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; font-family: sans-serif; }
+  .card { border: 1px solid #ccc; padding: 10px; border-radius: 8px; }
+  h3 { margin-top: 0; color: #333; }
+  .date { padding: 4px; border-bottom: 1px solid #eee; }
+  /* Highlights the next upcoming payment */
+  .next-payment { background-color: yellow; font-weight: bold; }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>Government Benefit Dates 2026-2027</h1>
-</header>
-
-<main class="container">
-  <div class="payment-grid">
-
-    <!-- Trillium (OTB) -->
-    <article class="payment-card">
-      <h2>Ontario Trillium Benefit</h2>
-      <div class="payment-date">July 10, 2026</div>
-      <div class="payment-date">August 10, 2026</div>
-      <div class="payment-date">September 10, 2026</div>
-      <div class="payment-date">October 9, 2026*</div>
-      <div class="payment-date">November 10, 2026</div>
-      <div class="payment-date">December 10, 2026</div>
-      <div class="payment-date">January 8, 2027*</div>
-      <div class="payment-date">February 10, 2027</div>
-      <div class="payment-date">March 10, 2027</div>
-      <div class="payment-date">April 9, 2027*</div>
-      <div class="payment-date">May 10, 2027</div>
-      <div class="payment-date">June 10, 2027</div>
-      <p class="note">*Adjusted for weekends/holidays.</p>
-    </article>
-
-    <!-- Disability Benefit -->
-    <article class="payment-card">
-      <h2>Canada Disability Benefit</h2>
-      <div class="payment-date">July 16, 2026</div>
-      <div class="payment-date">August 20, 2026</div>
-      <div class="payment-date">September 17, 2026</div>
-      <div class="payment-date">October 15, 2026</div>
-      <div class="payment-date">November 19, 2026</div>
-      <div class="payment-date">December 17, 2026</div>
-      <div class="payment-date">January 21, 2027</div>
-      <div class="payment-date">February 18, 2027</div>
-      <div class="payment-date">March 18, 2027</div>
-      <div class="payment-date">April 15, 2027</div>
-      <div class="payment-date">May 20, 2027</div>
-      <div class="payment-date">June 17, 2027</div>
-      <p class="note">Paid on the 3rd Thursday of each month.</p>
-    </article>
-
-    <!-- Canada Groceries & Essentials (GST) -->
-    <article class="payment-card">
-      <h2>Canada Groceries & Essentials</h2>
-      <div class="payment-date">July 3, 2026</div>
-      <div class="payment-date">October 5, 2026</div>
-      <div class="payment-date">January 5, 2027</div>
-      <div class="payment-date">April 5, 2027</div>
-      <p class="note">Quarterly payments.</p>
-    </article>
-
-    <!-- Canada Child Benefit (CCB) -->
-    <article class="payment-card">
-      <h2>Canada Child Benefit</h2>
-      <div class="payment-date">July 20, 2026</div>
-      <div class="payment-date">August 20, 2026</div>
-      <div class="payment-date">September 18, 2026</div>
-      <div class="payment-date">October 20, 2026</div>
-      <div class="payment-date">November 20, 2026</div>
-      <div class="payment-date">December 11, 2026</div>
-      <div class="payment-date">January 20, 2027</div>
-      <div class="payment-date">February 19, 2027</div>
-      <div class="payment-date">March 19, 2027</div>
-      <div class="payment-date">April 20, 2027</div>
-      <div class="payment-date">May 20, 2027</div>
-      <div class="payment-date">June 18, 2027</div>
-    </article>
-
-    <!-- CPP & OAS -->
-    <article class="payment-card">
-      <h2>CPP & OAS</h2>
-      <div class="payment-date">July 29, 2026</div>
-      <div class="payment-date">August 27, 2026</div>
-      <div class="payment-date">September 25, 2026</div>
-      <div class="payment-date">October 28, 2026</div>
-      <div class="payment-date">November 26, 2026</div>
-      <div class="payment-date">December 22, 2026</div>
-      <div class="payment-date">January 27, 2027</div>
-      <div class="payment-date">February 24, 2027</div>
-      <div class="payment-date">March 26, 2027</div>
-      <div class="payment-date">April 28, 2027</div>
-      <div class="payment-date">May 26, 2027</div>
-      <div class="payment-date">June 25, 2027</div>
-    </article>
-
+<div class="container">
+  <!-- OTB -->
+  <div class="card">
+    <h3>Ontario Trillium</h3>
+    <div class="date">July 10, 2026</div>
+    <div class="date">Aug 10, 2026</div>
+    <div class="date">Sept 10, 2026</div>
+    <div class="date">Oct 9, 2026</div>
+    <div class="date">Nov 10, 2026</div>
+    <div class="date">Dec 10, 2026</div>
+    <div class="date">Jan 8, 2027</div>
+    <div class="date">Feb 10, 2027</div>
+    <div class="date">Mar 10, 2027</div>
+    <div class="date">Apr 9, 2027</div>
+    <div class="date">May 10, 2027</div>
+    <div class="date">June 10, 2027</div>
   </div>
-</main>
+
+  <!-- CCB -->
+  <div class="card">
+    <h3>Canada Child Benefit</h3>
+    <div class="date">July 20, 2026</div>
+    <div class="date">Aug 20, 2026</div>
+    <div class="date">Sept 18, 2026</div>
+    <div class="date">Oct 20, 2026</div>
+    <div class="date">Nov 20, 2026</div>
+    <div class="date">Dec 11, 2026</div>
+    <div class="date">Jan 20, 2027</div>
+    <div class="date">Feb 19, 2027</div>
+    <div class="date">Mar 19, 2027</div>
+    <div class="date">Apr 20, 2027</div>
+    <div class="date">May 20, 2027</div>
+    <div class="date">June 18, 2027</div>
+  </div>
+
+  <!-- CPP/OAS -->
+  <div class="card">
+    <h3>CPP & OAS</h3>
+    <div class="date">July 29, 2026</div>
+    <div class="date">Aug 27, 2026</div>
+    <div class="date">Sept 25, 2026</div>
+    <div class="date">Oct 28, 2026</div>
+    <div class="date">Nov 26, 2026</div>
+    <div class="date">Dec 22, 2026</div>
+    <div class="date">Jan 27, 2027</div>
+    <div class="date">Feb 24, 2027</div>
+    <div class="date">Mar 26, 2027</div>
+    <div class="date">Apr 28, 2027</div>
+    <div class="date">May 26, 2027</div>
+    <div class="date">June 25, 2027</div>
+  </div>
+</div>
+
+<script>
+  // Simple script to highlight the next upcoming date based on today's date (June 15, 2026)
+  const today = new Date('2026-06-15');
+  document.querySelectorAll('.date').forEach(el => {
+    const payDate = new Date(el.innerText);
+    if (payDate >= today) {
+      el.classList.add('next-payment');
+      // Remove class from all but the first one found
+      if (document.querySelectorAll('.next-payment').length > 1) {
+        el.classList.remove('next-payment');
+      }
+    }
+  });
+</script>
 
 </body>
 </html>
