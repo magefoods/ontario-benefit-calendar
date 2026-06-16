@@ -1,329 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ontario Government Payment Dates 2026</title>
-<style>
-  /* Reset & base */
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif; line-height:1.6; color:#222; background-color:#fff; min-height:100vh; display:flex; flex-direction:column; }
-  a { color:#0645ad; text-decoration:underline; }
-  a:hover,a:focus { color:#0b3d91; outline:none; }
-  .container { max-width:1100px; margin:0 auto; padding:1.5rem 1rem 3rem; flex-grow:1; }
-
-  /* Header */
-  header { background-color:#42618b; color:#f0f0f0; padding:1.5rem 1rem; margin-bottom:1.5rem; border-radius:6px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.15); font-weight:600; font-size:1.25rem; letter-spacing:0.03em; }
-  h1 { font-size:2rem; font-weight:700; margin-bottom:0.25rem; }
-  .subtitle { font-size:1.1rem; opacity:0.85; }
-
-  /* Navigation */
-  nav { background-color:#f7f7f7; padding:1rem; border-radius:6px; margin-bottom:1.5rem; box-shadow:0 1px 3px rgba(0,0,0,0.1); text-align:center; }
-  .nav-links { display:inline-flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; }
-  .nav-links a { padding:0.5rem 1.2rem; border-radius:20px; background-color:#e1e4f2; color:#333; font-weight:500; border:1px solid transparent; transition:background-color 0.25s ease,border-color 0.25s ease; }
-  .nav-links a:hover,.nav-links a:focus { background-color:#42618b; color:white; border-color:#42618b; outline:none; }
-
-  /* Announcements */
-  .announcements { margin-bottom:2rem; max-width:600px; margin-left:auto; margin-right:auto; text-align:center; }
-  .important-note { background-color:#fff3cd; border:1px solid #ffeeba; color:#856404; padding:1rem 1.5rem; border-radius:6px; margin:1rem 0; text-align:left; }
-  .important-note h3 { margin-bottom:0.8rem; font-size:1.25rem; color:#6b4b0f; }
-  .important-note ul { margin-left:1.5rem; }
-  .important-note ul li { margin-bottom:0.3rem; }
-  .important-note a { color:#0645ad; }
-
-  /* Payment cards grid */
-  .payment-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem; margin-bottom:3rem; }
-  .payment-card { background-color:#fff; padding:1.25rem; border:1px solid #ddd; border-radius:8px; box-shadow:none; transition:box-shadow 0.25s ease; display:flex; flex-direction:column; }
-  .payment-card:focus-within,.payment-card:hover { box-shadow:0 4px 8px rgba(66,97,139,0.25); outline:none; }
-  .payment-card h2 { font-size:1.3rem; margin-bottom:1rem; border-bottom:2px solid #42618b; padding-bottom:0.3rem; color:#2a2a2a; }
-
-  /* Payment dates */
-  .payment-date { background-color:#f9f9f9; padding:0.5rem 0.75rem; margin:0.4rem 0; border-left:4px solid #42618b; font-weight:600; color:#333; border-radius:3px; cursor:default; user-select:none; }
-  .highlight-next { background-color:#d9f0d9; border-left-color:#2d7a2d; font-weight:700; color:#1d531d; }
-
-  /* Expand button */
-  .expand-btn { margin-top:auto; align-self:flex-start; background:none; border:none; color:#0645ad; font-weight:600; cursor:pointer; padding:0.25rem 0; user-select:none; transition:color 0.2s ease; }
-  .expand-btn:hover,.expand-btn:focus { color:#0b3d91; outline:none; }
-
-  /* Bank info */
-  .bank-info { max-width:1100px; margin:0 auto 1.5rem; padding:2rem 3rem; border-radius:8px; border:1px solid #ddd; background-color:#fff; color:#2a2a2a; font-weight:600; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
-  .bank-info h2 { margin-bottom:0.8rem; color:#2a2a2a; }
-  .bank-info p { color:#555; margin-bottom:1rem; font-weight:400; }
-  .bank-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.25rem; }
-  .bank-item { background-color:#f7f7f7; padding:1rem 1.25rem; border-radius:5px; border-left:4px solid #3c763d; color:#2c3e50; font-weight:600; user-select:none; }
-
-  /* Footer */
-  footer p { text-align:center; font-weight:500; font-size:0.9rem; color:#666; border-top:1px solid #ddd; padding-top:1rem; margin-top:2rem; letter-spacing:0.02em; }
-
-  /* Responsive tweaks */
-  @media(max-width:768px) { .container{padding:1rem 0.75rem 2rem;} h1{font-size:1.75rem;} .nav-links{flex-direction:column; gap:0.5rem;} .payment-grid{grid-template-columns:1fr;} .bank-grid{grid-template-columns:1fr;} }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Benefit Payment Dates 2026-2027</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f4f9; }
+        h1 { text-align: center; color: #2c3e50; }
+        .benefit-section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { color: #42618b; border-bottom: 2px solid #42618b; padding-bottom: 5px; }
+        .payment-date { display: inline-block; background: #e8f0fe; padding: 5px 12px; margin: 5px; border-radius: 4px; border-left: 4px solid #42618b; font-weight: 600; }
+        .note { font-size: 0.85rem; color: #666; font-style: italic; margin-top: 10px; }
+    </style>
 </head>
 <body>
 
-<header role="banner">
-  <h1>Ontario Government Payment Dates 2026</h1>
-  <p class="subtitle">Stay informed about your benefit payment schedules</p>
-</header>
+    <h1>Government Benefit Payment Dates (2026–2027)</h1>
 
-<main class="container" role="main">
+    <!-- Canada Groceries and Essentials Benefit -->
+    <section class="benefit-section">
+        <h2>Canada Groceries & Essentials Benefit</h2>
+        <div class="payment-date">July 3, 2026</div>
+        <div class="payment-date">October 5, 2026</div>
+        <div class="payment-date">January 5, 2027</div>
+        <div class="payment-date">April 5, 2027</div>
+        <p class="note">*Formerly the GST/HST credit. Payments are quarterly.</p>
+    </section>
 
-  <nav role="navigation" aria-label="Benefit payment sections">
-    <div class="nav-links">
-      <a href="#odsp">ODSP</a>
-      <a href="#trillium">Trillium Benefit</a>
-      <a href="#gst">GST Credit</a>
-      <a href="#disability">Disability Benefit</a>
-      <a href="#ccb">Child Benefit</a>
-      <a href="#cwb">Advance Canada Workers Benefit</a>
-      <a href="#cpp">Canada Pension Plan 2026</a>
-      <a href="#oasis">Old Age Security 2026</a>
-      <a href="#banks">Bank Times</a>
-      <a href="changelog.html" target="_blank" rel="noopener noreferrer">Changelog</a>
-    </div>
-  </nav>
+    <!-- Ontario Trillium Benefit -->
+    <section class="benefit-section">
+        <h2>Ontario Trillium Benefit (OTB)</h2>
+        <div class="payment-date">July 10, 2026</div>
+        <div class="payment-date">August 10, 2026</div>
+        <div class="payment-date">September 10, 2026</div>
+        <div class="payment-date">October 9, 2026</div>
+        <div class="payment-date">November 10, 2026</div>
+        <div class="payment-date">December 10, 2026</div>
+        <div class="payment-date">January 8, 2027</div>
+        <div class="payment-date">February 10, 2027</div>
+        <div class="payment-date">March 10, 2027</div>
+        <div class="payment-date">April 9, 2027</div>
+        <div class="payment-date">May 10, 2027</div>
+        <div class="payment-date">June 10, 2027</div>
+        <p class="note">*Dates adjusted for weekends/holidays.</p>
+    </section>
 
-  <section class="announcements" aria-live="polite" id="announcements-container">
-    <div class="important-note" role="region" aria-label="Important notices">
-      <h3>Important Notices</h3>
-      <ul>
-        <li>Benefit payments can vary by bank processing times.</li>
-        <li>Always check with your financial institution if unsure.</li>
-        <li>Data is subject to change; keep this page bookmarked for updates.</li>
-      </ul>
-    </div>
-
-    <div id="payment-today-banner" class="important-note" style="display:none; background-color:#d1ecf1; border-color:#bee5eb; color:#0c5460;" role="region" aria-label="Payment Today Banner">
-      <h3>Payment Today!</h3>
-      <p>One or more benefits have a scheduled payment today. Check your bank account!</p>
-    </div>
-  </section>
-
-  <section class="payment-grid" aria-label="Benefit payment dates">
-
-    <!-- ODSP -->
-    <article class="payment-card" id="odsp" tabindex="0" aria-labelledby="odsp-title">
-      <h2 id="odsp-title">ODSP Payment Dates 2026</h2>
-      <div class="payment-date">January 30, 2026</div>
-      <div class="payment-date">February 27, 2026</div>
-      <div class="payment-date">March 31, 2026</div>
-      <div class="payment-date">April 30, 2026</div>
-      <div class="payment-date">May 29, 2026</div>
-      <div class="payment-date">June 30, 2026</div>
-      <div class="payment-date">July 31, 2026</div>
-      <div class="payment-date">August 31, 2026</div>
-      <div class="payment-date">September 29, 2026</div>
-      <div class="payment-date">October 30, 2026</div>
-      <div class="payment-date">November 30, 2026</div>
-      <div class="payment-date">December 2026 TBC</div>
-    </article>
-
-    <!-- Trillium -->
-    <article class="payment-card" id="trillium" tabindex="0" aria-labelledby="trillium-title">
-      <h2 id="trillium-title">Ontario Trillium Benefit 2026</h2>
-      <div class="payment-date">January 10, 2026</div>
-      <div class="payment-date">February 10, 2026</div>
-      <div class="payment-date">March 10, 2026</div>
-      <div class="payment-date">April 10, 2026</div>
-      <div class="payment-date">May 10, 2026</div>
-      <div class="payment-date">June 10, 2026</div>
-      <div class="payment-date">July 10, 2026</div>
-      <div class="payment-date">August 10, 2026</div>
-      <div class="payment-date">September 10, 2026</div>
-      <div class="payment-date">October 10, 2026</div>
-      <div class="payment-date">November 10, 2026</div>
-      <div class="payment-date">December 10, 2026</div>
-    </article>
-
-    <!-- GST -->
-    <article class="payment-card" id="gst" tabindex="0" aria-labelledby="gst-title">
-      <h2 id="gst-title">GST Credit 2026</h2>
-      <div class="payment-date">October 1, 2026</div>
-    </article>
-
-    <!-- Disability -->
-    <article class="payment-card" id="disability" tabindex="0" aria-labelledby="disability-title">
-      <h2 id="disability-title">Canada Disability Benefit 2026</h2>
-      <p style="font-size:0.9rem; color:#6c757d; margin-bottom:1rem;">(Linked to the DTC)</p>
-      <div class="payment-date">January 15, 2026</div>
-      <div class="payment-date">February 19, 2026</div>
-      <div class="payment-date">March 19, 2026</div>
-      <div class="payment-date">April 16, 2026</div>
-      <div class="payment-date">May 21, 2026</div>
-      <div class="payment-date">June 18, 2026</div>
-      <div class="payment-date">July 20, 2026</div>
-      <div class="payment-date">August 20, 2026</div>
-      <div class="payment-date">September 17, 2026</div>
-      <div class="payment-date">October 15, 2026</div>
-      <div class="payment-date">November 19, 2026</div>
-      <div class="payment-date">December 17, 2026</div>
-    </article>
-
-    <!-- CCB -->
-    <article class="payment-card" id="ccb" tabindex="0" aria-labelledby="ccb-title">
-      <h2 id="ccb-title">Canada Child Benefit 2026</h2>
-      <div class="payment-date">January 20, 2026</div>
-      <div class="payment-date">February 20, 2026</div>
-      <div class="payment-date">March 20, 2026</div>
-      <div class="payment-date">April 20, 2026</div>
-      <div class="payment-date">May 20, 2026</div>
-      <div class="payment-date">June 22, 2026</div>
-      <div class="payment-date">July 20, 2026</div>
-      <div class="payment-date">August 20, 2026</div>
-      <div class="payment-date">September 21, 2026</div>
-      <div class="payment-date">October 20, 2026</div>
-      <div class="payment-date">November 20, 2026</div>
-      <div class="payment-date">December 21, 2026</div>
-    </article>
-
-    <!-- CWB -->
-    <article class="payment-card" id="cwb" tabindex="0" aria-labelledby="cwb-title">
-      <h2 id="cwb-title">Advance Canada Workers Benefit 2026</h2>
-      <div class="payment-date">January 10, 2026</div>
-      <div class="payment-date">July 10, 2026</div>
-      <div class="payment-date">October 10, 2026</div>
-    </article>
-
-    <!-- CPP -->
-    <article class="payment-card" id="cpp" tabindex="0" aria-labelledby="cpp-title">
-      <h2 id="cpp-title">Canada Pension Plan 2026</h2>
-      <div class="payment-date">January 28, 2026</div>
-      <div class="payment-date">February 25, 2026</div>
-      <div class="payment-date">March 27, 2026</div>
-      <div class="payment-date">April 28, 2026</div>
-      <div class="payment-date">May 27, 2026</div>
-      <div class="payment-date">June 26, 2026</div>
-      <div class="payment-date">July 29, 2026</div>
-      <div class="payment-date">August 27, 2026</div>
-      <div class="payment-date">September 25, 2026</div>
-      <div class="payment-date">October 28, 2026</div>
-      <div class="payment-date">November 26, 2026</div>
-      <div class="payment-date">December 22, 2026</div>
-    </article>
-
-    <!-- OAS -->
-    <article class="payment-card" id="oasis" tabindex="0" aria-labelledby="oasis-title">
-      <h2 id="oasis-title">Old Age Security 2026</h2>
-      <div class="payment-date">January 28, 2026</div>
-      <div class="payment-date">February 25, 2026</div>
-      <div class="payment-date">March 27, 2026</div>
-      <div class="payment-date">April 28, 2026</div>
-      <div class="payment-date">May 27, 2026</div>
-      <div class="payment-date">June 26, 2026</div>
-      <div class="payment-date">July 29, 2026</div>
-      <div class="payment-date">August 27, 2026</div>
-      <div class="payment-date">September 25, 2026</div>
-      <div class="payment-date">October 28, 2026</div>
-      <div class="payment-date">November 26, 2026</div>
-      <div class="payment-date">December 22, 2026</div>
-    </article>
-
-  </section>
-</main>
-
-<section class="bank-info" id="banks" aria-label="Bank direct deposit times for ODSP" tabindex="0">
-  <h2>Bank Direct Deposit Times for ODSP</h2>
-  <p>Information compiled by community members</p>
-  <div class="bank-grid">
-    <div class="bank-item">Tangerine — Night before (~5–10 PM)</div>
-    <div class="bank-item">KOHO — Night before (~5–9 PM)</div>
-    <div class="bank-item">PC Financial — Night before (~8–10 PM)</div>
-    <div class="bank-item">BMO — Around 12:00–1:00 AM, occasionally ~9 PM</div>
-    <div class="bank-item">CIBC — Typically 3:15–4:00 AM</div>
-    <div class="bank-item">RBC — Typically 3:00–6:00 AM (~5:30 AM for government)</div>
-    <div class="bank-item">Scotiabank — Generally 3:00–6:00 AM</div>
-    <div class="bank-item">TD Bank — Often 3:00–6:00 AM; TD Early Pay may post 2 days early</div>
-    <div class="bank-item">National Bank — Generally 3:00–6:00 AM</div>
-    <div class="bank-item">Meridian Credit Union — Normally 3:00–6:00 AM</div>
-    <div class="bank-item">Credit Unions (others) — Mostly 3:00–6:00 AM</div>
-  </div>
-</section>
-
-<footer role="contentinfo">
-  <p>This information is compiled from community sources and official government websites.<br>Always verify payment dates with official sources. Information will be updated for 2027.</p>
-  <p aria-label="Last updated date">Last updated: December 18, 2025</p>
-  <div style="text-align:center; margin-top:1rem;">
-    <script language="JavaScript" type="text/javascript" src="https://gnrcounter.com/counter.php?accId=e416be1eff44897a3d1736aa90a9ff04"></script>
-    <noscript><a href="https://gnrcounter.com" title="Web Analytics">Web Analytics</a></noscript>
-  </div>
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('.payment-card');
-  const today = new Date();
-  let paymentToday = false;
-
-  cards.forEach(card => {
-    const dates = Array.from(card.querySelectorAll('.payment-date'));
-    let nextDateIndex = dates.findIndex(d => new Date(d.textContent) >= today);
-    if(nextDateIndex === -1) nextDateIndex = dates.length-1;
-
-    dates.forEach((d,i)=>{
-      if(i===nextDateIndex){ d.classList.add('highlight-next'); d.style.display='block'; }
-      else{ d.style.display='none'; d.classList.remove('highlight-next'); }
-      if(new Date(d.textContent).toDateString()===today.toDateString()) paymentToday=true;
-    });
-
-    if(dates.length>1){
-      const btn=document.createElement('button');
-      btn.className='expand-btn';
-      btn.setAttribute('aria-expanded','false');
-      btn.textContent='Show all dates';
-      btn.addEventListener('click',()=>{
-        const expanded=btn.getAttribute('aria-expanded')==='true';
-        btn.setAttribute('aria-expanded',expanded?'false':'true');
-        btn.textContent=expanded?'Show all dates':'Show fewer dates';
-        dates.forEach((d,i)=>{ d.style.display=expanded && i!==nextDateIndex?'none':'block'; });
-      });
-      card.appendChild(btn);
-    }
-  });
-
-  if(paymentToday) document.getElementById('payment-today-banner').style.display='block';
-
-  document.querySelectorAll('nav a[href^="#"]').forEach(link=>{
-    link.addEventListener('click', e=>{
-      e.preventDefault();
-      const target=document.querySelector(link.getAttribute('href'));
-      if(target){ target.scrollIntoView({behavior:'smooth',block:'start'}); target.focus({preventScroll:true}); }
-    });
-  });
-
-  initializeAnnouncements();
-
-  function initializeAnnouncements(){
-    const container = document.getElementById('announcements-container');
-    const month = today.getMonth(); // 0-11
-
-    const monthlyAnnouncements = {
-        0: ["Check January benefit dates and plan for upcoming payments."],
-        1: ["Check February benefit dates and plan for upcoming payments."],
-        2: ["Check March benefit dates and plan for upcoming payments."],
-        3: ["Check April benefit dates and plan for upcoming payments."],
-        4: ["Check May benefit dates and plan for upcoming payments."],
-        5: ["Check June benefit dates and plan for upcoming payments."],
-        6: ["Check July benefit dates and plan for upcoming payments."],
-        7: ["Check August benefit dates and plan for upcoming payments."],
-        8: ["Check September benefit dates and plan for upcoming payments."],
-        9: ["Check October benefit dates and plan for upcoming payments."],
-        10: ["Check November benefit dates and plan for upcoming payments."],
-        11: ["Check December benefit dates and plan for upcoming payments."]
-    };
-
-    if(monthlyAnnouncements[month]){
-        const messages = monthlyAnnouncements[month];
-        messages.forEach(msg => {
-            const note = `<div class="important-note" role="region" aria-label="${today.toLocaleString('default', { month: 'long' })} announcements">
-                              <h3>${today.toLocaleString('default', { month: 'long' })} Payment Notes</h3>
-                              <ul><li>${msg}</li></ul>
-                          </div>`;
-            container.insertAdjacentHTML('beforeend', note);
-        });
-    }
-  }
-});
-</script>
+    <!-- Canada Disability Benefit -->
+    <section class="benefit-section">
+        <h2>Canada Disability Benefit</h2>
+        <div class="payment-date">July 16, 2026</div>
+        <div class="payment-date">August 20, 2026</div>
+        <div class="payment-date">September 17, 2026</div>
+        <div class="payment-date">October 15, 2026</div>
+        <div class="payment-date">November 19, 2026</div>
+        <div class="payment-date">December 17, 2026</div>
+        <div class="payment-date">January 21, 2027</div>
+        <div class="payment-date">February 18, 2027</div>
+        <div class="payment-date">March 18, 2027</div>
+        <div class="payment-date">April 15, 2027</div>
+        <div class="payment-date">May 20, 2027</div>
+        <div class="payment-date">June 17, 2027</div>
+        <p class="note">*Paid on the 3rd Thursday of each month.</p>
+    </section>
 
 </body>
 </html>
